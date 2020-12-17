@@ -227,7 +227,7 @@ class ShopElement extends ZActiveRecord
 
             $config->indexSearch = 1;
 
-                                                                                                                                                            $config->nameValue = static function (ShopElement $model) {
+                                                                                                                                                                        $config->nameValue = static function (ShopElement $model) {
                 /** @var ShopElement $model * */
                 $product = ShopProduct::findOne($model->shop_product_id);
 
@@ -245,7 +245,7 @@ class ShopElement extends ZActiveRecord
                 return $name;
             };
 
-                                                                                                                                                            $config->query = function ($model) {
+                                                                                                                                                                        $config->query = function ($model) {
 
                 if ($this->hasRole('seller'))
                     return static::find()

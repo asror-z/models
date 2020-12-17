@@ -457,7 +457,7 @@ class User extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
-                        $config->nameValue = function (User $model) {
+                                    $config->nameValue = function (User $model) {
                 if ($model->role === 'agent') {
                     $count = User::find()
                         ->where(['role' => 'agent'])
@@ -491,7 +491,7 @@ class User extends ZActiveRecord
 
             };
 
-                        $config->guidValue = function ($model) {
+                                    $config->guidValue = function ($model) {
                 return Az::$app->cores->guid->create();
             };
 
@@ -514,6 +514,228 @@ class User extends ZActiveRecord
                     ],
                 ];
             $config->hasMany = [
+                    'ShopBanner' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopBrand' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopCatalog' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopCatalogWare' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopCategory' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopChannel' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopCoupon' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopCourier' => [
+                        'user_id' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopDelay' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopDelayCause' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopDiscount' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopElement' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopOffer' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopOption' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopOptionBranch' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopOptionType' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopOrder' => [
+                        'user_id' => 'id',
+                        'responsible' => 'id',
+                        'operator' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopOrderItem' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopOverview' => [
+                        'user_company_id' => 'id',
+                        'user_id' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopPackaging' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopPayment' => [
+                        'user_id' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopProduct' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopQuestion' => [
+                        'user_company_id' => 'id',
+                        'user_id' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopRejectCause' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopReview' => [
+                        'user_company_id' => 'id',
+                        'user_id' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopReviewOption' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'ShopShipment' => [
+                        'responsible' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'Ware' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'WareAccept' => [
+                        'responsible' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'WareEnter' => [
+                        'responsible' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'WareEnterItem' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'WareExit' => [
+                        'responsible' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'WareExitItem' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'WareReturn' => [
+                        'responsible' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'WareSeries' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'WareTrans' => [
+                        'responsible' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'WareTransItem' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'Auto' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'AutoModel' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'AutoMotor' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'AutoType' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
                     'PaysCurrency' => [
                         'deleted_by' => 'id',
                         'created_by' => 'id',
@@ -561,6 +783,63 @@ class User extends ZActiveRecord
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
+                    ],
+                    'DiscAmount' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'CallsAdmin' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'CallsCdr' => [
+                        'deleted_by' => 'id',
+                    ],
+                    'CallsCel' => [
+                        'deleted_by' => 'id',
+                    ],
+                    'CallsExtens' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'CallsIvr' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'CallsOrder' => [
+                        'user_id' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'CallsQueue' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'CallsRecord' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'CallsStatus' => [
+                        'user_id' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'CallsStatusTime' => [
+                        'user_id' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'CallsUserman' => [
+                        'deleted_by' => 'id',
                     ],
                     'User' => [
                         'deleted_by' => 'id',
@@ -901,6 +1180,11 @@ class User extends ZActiveRecord
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
+                    'TreeProduct' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
                     'GovsDegree' => [
                         'deleted_by' => 'id',
                         'created_by' => 'id',
@@ -921,85 +1205,77 @@ class User extends ZActiveRecord
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
-                    'EyufCompatriot' => [
+                    'DoftDrivers' => [
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
-                    'EyufDocument' => [
+                    'DoftShippers' => [
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
-                    'EyufDocumentType' => [
+                    'DoftSignup' => [
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
-                    'EyufFile' => [
+                    'CpasCompany' => [
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
-                    'EyufInvoice' => [
+                    'CpasLand' => [
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
-                    'EyufInvoiceType' => [
+                    'CpasOffer' => [
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
-                    'EyufManual' => [
+                    'CpasOfferItem' => [
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
-                    'EyufNeed' => [
+                    'CpasPaysHistory' => [
+                        'user_id' => 'id',
+                        'userBy' => 'id',
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
-                    'EyufNeedCompatriot' => [
+                    'CpasSource' => [
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
-                    'EyufNeedCount' => [
-                        'deleted_by' => 'id',
-                        'created_by' => 'id',
-                        'modified_by' => 'id',
-                    ],
-                    'EyufReport' => [
-                        'deleted_by' => 'id',
-                        'created_by' => 'id',
-                        'modified_by' => 'id',
-                    ],
-                    'EyufRequest' => [
-                        'deleted_by' => 'id',
-                        'created_by' => 'id',
-                        'modified_by' => 'id',
-                    ],
-                    'EyufReview' => [
-                        'employer' => 'id',
-                        'scholar' => 'id',
-                        'deleted_by' => 'id',
-                        'created_by' => 'id',
-                        'modified_by' => 'id',
-                    ],
-                    'EyufScholar' => [
+                    'CpasStream' => [
                         'user_id' => 'id',
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
-                    'EyufTable' => [
+                    'CpasStreamItem' => [
+                        'user_id' => 'id',
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
                     ],
-                    'EyufTicket' => [
+                    'CpasTeaser' => [
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'CpasTracker' => [
+                        'user_id' => 'id',
+                        'deleted_by' => 'id',
+                        'created_by' => 'id',
+                        'modified_by' => 'id',
+                    ],
+                    'TreeShop' => [
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
@@ -1902,6 +2178,3366 @@ class User extends ZActiveRecord
 
     /**
      *
+     * Function  getShopBannersWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopBanner
+     */            
+    public function getShopBannersWithDeletedByMany()
+    {
+       return $this->getMany(ShopBanner::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopBannersWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopBannersWithDeletedBy()
+    {
+       return $this->hasMany(ShopBanner::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopBannersWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopBanner
+     */            
+    public function getShopBannersWithCreatedByMany()
+    {
+       return $this->getMany(ShopBanner::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopBannersWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopBannersWithCreatedBy()
+    {
+       return $this->hasMany(ShopBanner::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopBannersWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopBanner
+     */            
+    public function getShopBannersWithModifiedByMany()
+    {
+       return $this->getMany(ShopBanner::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopBannersWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopBannersWithModifiedBy()
+    {
+       return $this->hasMany(ShopBanner::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopBrandsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopBrand
+     */            
+    public function getShopBrandsWithDeletedByMany()
+    {
+       return $this->getMany(ShopBrand::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopBrandsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopBrandsWithDeletedBy()
+    {
+       return $this->hasMany(ShopBrand::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopBrandsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopBrand
+     */            
+    public function getShopBrandsWithCreatedByMany()
+    {
+       return $this->getMany(ShopBrand::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopBrandsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopBrandsWithCreatedBy()
+    {
+       return $this->hasMany(ShopBrand::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopBrandsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopBrand
+     */            
+    public function getShopBrandsWithModifiedByMany()
+    {
+       return $this->getMany(ShopBrand::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopBrandsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopBrandsWithModifiedBy()
+    {
+       return $this->hasMany(ShopBrand::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCatalogsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCatalog
+     */            
+    public function getShopCatalogsWithDeletedByMany()
+    {
+       return $this->getMany(ShopCatalog::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCatalogsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCatalogsWithDeletedBy()
+    {
+       return $this->hasMany(ShopCatalog::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCatalogsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCatalog
+     */            
+    public function getShopCatalogsWithCreatedByMany()
+    {
+       return $this->getMany(ShopCatalog::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCatalogsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCatalogsWithCreatedBy()
+    {
+       return $this->hasMany(ShopCatalog::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCatalogsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCatalog
+     */            
+    public function getShopCatalogsWithModifiedByMany()
+    {
+       return $this->getMany(ShopCatalog::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCatalogsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCatalogsWithModifiedBy()
+    {
+       return $this->hasMany(ShopCatalog::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCatalogWaresWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCatalogWare
+     */            
+    public function getShopCatalogWaresWithDeletedByMany()
+    {
+       return $this->getMany(ShopCatalogWare::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCatalogWaresWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCatalogWaresWithDeletedBy()
+    {
+       return $this->hasMany(ShopCatalogWare::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCatalogWaresWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCatalogWare
+     */            
+    public function getShopCatalogWaresWithCreatedByMany()
+    {
+       return $this->getMany(ShopCatalogWare::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCatalogWaresWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCatalogWaresWithCreatedBy()
+    {
+       return $this->hasMany(ShopCatalogWare::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCatalogWaresWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCatalogWare
+     */            
+    public function getShopCatalogWaresWithModifiedByMany()
+    {
+       return $this->getMany(ShopCatalogWare::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCatalogWaresWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCatalogWaresWithModifiedBy()
+    {
+       return $this->hasMany(ShopCatalogWare::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCategoriesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCategory
+     */            
+    public function getShopCategoriesWithDeletedByMany()
+    {
+       return $this->getMany(ShopCategory::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCategoriesWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCategoriesWithDeletedBy()
+    {
+       return $this->hasMany(ShopCategory::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCategoriesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCategory
+     */            
+    public function getShopCategoriesWithCreatedByMany()
+    {
+       return $this->getMany(ShopCategory::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCategoriesWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCategoriesWithCreatedBy()
+    {
+       return $this->hasMany(ShopCategory::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCategoriesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCategory
+     */            
+    public function getShopCategoriesWithModifiedByMany()
+    {
+       return $this->getMany(ShopCategory::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCategoriesWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCategoriesWithModifiedBy()
+    {
+       return $this->hasMany(ShopCategory::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopChannelsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopChannel
+     */            
+    public function getShopChannelsWithDeletedByMany()
+    {
+       return $this->getMany(ShopChannel::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopChannelsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopChannelsWithDeletedBy()
+    {
+       return $this->hasMany(ShopChannel::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopChannelsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopChannel
+     */            
+    public function getShopChannelsWithCreatedByMany()
+    {
+       return $this->getMany(ShopChannel::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopChannelsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopChannelsWithCreatedBy()
+    {
+       return $this->hasMany(ShopChannel::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopChannelsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopChannel
+     */            
+    public function getShopChannelsWithModifiedByMany()
+    {
+       return $this->getMany(ShopChannel::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopChannelsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopChannelsWithModifiedBy()
+    {
+       return $this->hasMany(ShopChannel::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCouponsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCoupon
+     */            
+    public function getShopCouponsWithDeletedByMany()
+    {
+       return $this->getMany(ShopCoupon::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCouponsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCouponsWithDeletedBy()
+    {
+       return $this->hasMany(ShopCoupon::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCouponsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCoupon
+     */            
+    public function getShopCouponsWithCreatedByMany()
+    {
+       return $this->getMany(ShopCoupon::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCouponsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCouponsWithCreatedBy()
+    {
+       return $this->hasMany(ShopCoupon::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCouponsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCoupon
+     */            
+    public function getShopCouponsWithModifiedByMany()
+    {
+       return $this->getMany(ShopCoupon::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCouponsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCouponsWithModifiedBy()
+    {
+       return $this->hasMany(ShopCoupon::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCouriersWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCourier
+     */            
+    public function getShopCouriersWithUserIdMany()
+    {
+       return $this->getMany(ShopCourier::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCouriersWithUserId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCouriersWithUserId()
+    {
+       return $this->hasMany(ShopCourier::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCouriersWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCourier
+     */            
+    public function getShopCouriersWithDeletedByMany()
+    {
+       return $this->getMany(ShopCourier::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCouriersWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCouriersWithDeletedBy()
+    {
+       return $this->hasMany(ShopCourier::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCouriersWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCourier
+     */            
+    public function getShopCouriersWithCreatedByMany()
+    {
+       return $this->getMany(ShopCourier::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCouriersWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCouriersWithCreatedBy()
+    {
+       return $this->hasMany(ShopCourier::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCouriersWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCourier
+     */            
+    public function getShopCouriersWithModifiedByMany()
+    {
+       return $this->getMany(ShopCourier::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCouriersWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCouriersWithModifiedBy()
+    {
+       return $this->hasMany(ShopCourier::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopDelaysWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopDelay
+     */            
+    public function getShopDelaysWithDeletedByMany()
+    {
+       return $this->getMany(ShopDelay::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopDelaysWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopDelaysWithDeletedBy()
+    {
+       return $this->hasMany(ShopDelay::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopDelaysWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopDelay
+     */            
+    public function getShopDelaysWithCreatedByMany()
+    {
+       return $this->getMany(ShopDelay::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopDelaysWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopDelaysWithCreatedBy()
+    {
+       return $this->hasMany(ShopDelay::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopDelaysWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopDelay
+     */            
+    public function getShopDelaysWithModifiedByMany()
+    {
+       return $this->getMany(ShopDelay::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopDelaysWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopDelaysWithModifiedBy()
+    {
+       return $this->hasMany(ShopDelay::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopDelayCausesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopDelayCause
+     */            
+    public function getShopDelayCausesWithDeletedByMany()
+    {
+       return $this->getMany(ShopDelayCause::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopDelayCausesWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopDelayCausesWithDeletedBy()
+    {
+       return $this->hasMany(ShopDelayCause::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopDelayCausesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopDelayCause
+     */            
+    public function getShopDelayCausesWithCreatedByMany()
+    {
+       return $this->getMany(ShopDelayCause::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopDelayCausesWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopDelayCausesWithCreatedBy()
+    {
+       return $this->hasMany(ShopDelayCause::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopDelayCausesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopDelayCause
+     */            
+    public function getShopDelayCausesWithModifiedByMany()
+    {
+       return $this->getMany(ShopDelayCause::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopDelayCausesWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopDelayCausesWithModifiedBy()
+    {
+       return $this->hasMany(ShopDelayCause::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopDiscountsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopDiscount
+     */            
+    public function getShopDiscountsWithDeletedByMany()
+    {
+       return $this->getMany(ShopDiscount::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopDiscountsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopDiscountsWithDeletedBy()
+    {
+       return $this->hasMany(ShopDiscount::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopDiscountsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopDiscount
+     */            
+    public function getShopDiscountsWithCreatedByMany()
+    {
+       return $this->getMany(ShopDiscount::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopDiscountsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopDiscountsWithCreatedBy()
+    {
+       return $this->hasMany(ShopDiscount::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopDiscountsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopDiscount
+     */            
+    public function getShopDiscountsWithModifiedByMany()
+    {
+       return $this->getMany(ShopDiscount::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopDiscountsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopDiscountsWithModifiedBy()
+    {
+       return $this->hasMany(ShopDiscount::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopElementsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopElement
+     */            
+    public function getShopElementsWithDeletedByMany()
+    {
+       return $this->getMany(ShopElement::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopElementsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopElementsWithDeletedBy()
+    {
+       return $this->hasMany(ShopElement::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopElementsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopElement
+     */            
+    public function getShopElementsWithCreatedByMany()
+    {
+       return $this->getMany(ShopElement::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopElementsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopElementsWithCreatedBy()
+    {
+       return $this->hasMany(ShopElement::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopElementsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopElement
+     */            
+    public function getShopElementsWithModifiedByMany()
+    {
+       return $this->getMany(ShopElement::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopElementsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopElementsWithModifiedBy()
+    {
+       return $this->hasMany(ShopElement::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOffersWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOffer
+     */            
+    public function getShopOffersWithDeletedByMany()
+    {
+       return $this->getMany(ShopOffer::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOffersWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOffersWithDeletedBy()
+    {
+       return $this->hasMany(ShopOffer::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOffersWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOffer
+     */            
+    public function getShopOffersWithCreatedByMany()
+    {
+       return $this->getMany(ShopOffer::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOffersWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOffersWithCreatedBy()
+    {
+       return $this->hasMany(ShopOffer::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOffersWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOffer
+     */            
+    public function getShopOffersWithModifiedByMany()
+    {
+       return $this->getMany(ShopOffer::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOffersWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOffersWithModifiedBy()
+    {
+       return $this->hasMany(ShopOffer::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOptionsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOption
+     */            
+    public function getShopOptionsWithDeletedByMany()
+    {
+       return $this->getMany(ShopOption::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOptionsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOptionsWithDeletedBy()
+    {
+       return $this->hasMany(ShopOption::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOptionsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOption
+     */            
+    public function getShopOptionsWithCreatedByMany()
+    {
+       return $this->getMany(ShopOption::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOptionsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOptionsWithCreatedBy()
+    {
+       return $this->hasMany(ShopOption::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOptionsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOption
+     */            
+    public function getShopOptionsWithModifiedByMany()
+    {
+       return $this->getMany(ShopOption::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOptionsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOptionsWithModifiedBy()
+    {
+       return $this->hasMany(ShopOption::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOptionBranchesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOptionBranch
+     */            
+    public function getShopOptionBranchesWithDeletedByMany()
+    {
+       return $this->getMany(ShopOptionBranch::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOptionBranchesWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOptionBranchesWithDeletedBy()
+    {
+       return $this->hasMany(ShopOptionBranch::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOptionBranchesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOptionBranch
+     */            
+    public function getShopOptionBranchesWithCreatedByMany()
+    {
+       return $this->getMany(ShopOptionBranch::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOptionBranchesWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOptionBranchesWithCreatedBy()
+    {
+       return $this->hasMany(ShopOptionBranch::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOptionBranchesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOptionBranch
+     */            
+    public function getShopOptionBranchesWithModifiedByMany()
+    {
+       return $this->getMany(ShopOptionBranch::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOptionBranchesWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOptionBranchesWithModifiedBy()
+    {
+       return $this->hasMany(ShopOptionBranch::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOptionTypesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOptionType
+     */            
+    public function getShopOptionTypesWithDeletedByMany()
+    {
+       return $this->getMany(ShopOptionType::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOptionTypesWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOptionTypesWithDeletedBy()
+    {
+       return $this->hasMany(ShopOptionType::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOptionTypesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOptionType
+     */            
+    public function getShopOptionTypesWithCreatedByMany()
+    {
+       return $this->getMany(ShopOptionType::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOptionTypesWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOptionTypesWithCreatedBy()
+    {
+       return $this->hasMany(ShopOptionType::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOptionTypesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOptionType
+     */            
+    public function getShopOptionTypesWithModifiedByMany()
+    {
+       return $this->getMany(ShopOptionType::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOptionTypesWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOptionTypesWithModifiedBy()
+    {
+       return $this->hasMany(ShopOptionType::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOrdersWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrder
+     */            
+    public function getShopOrdersWithUserIdMany()
+    {
+       return $this->getMany(ShopOrder::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrdersWithUserId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrdersWithUserId()
+    {
+       return $this->hasMany(ShopOrder::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOrdersWithResponsibleMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrder
+     */            
+    public function getShopOrdersWithResponsibleMany()
+    {
+       return $this->getMany(ShopOrder::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrdersWithResponsible
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrdersWithResponsible()
+    {
+       return $this->hasMany(ShopOrder::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOrdersWithOperatorMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrder
+     */            
+    public function getShopOrdersWithOperatorMany()
+    {
+       return $this->getMany(ShopOrder::class, [
+            'operator' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrdersWithOperator
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrdersWithOperator()
+    {
+       return $this->hasMany(ShopOrder::class, [
+            'operator' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOrdersWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrder
+     */            
+    public function getShopOrdersWithDeletedByMany()
+    {
+       return $this->getMany(ShopOrder::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrdersWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrdersWithDeletedBy()
+    {
+       return $this->hasMany(ShopOrder::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOrdersWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrder
+     */            
+    public function getShopOrdersWithCreatedByMany()
+    {
+       return $this->getMany(ShopOrder::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrdersWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrdersWithCreatedBy()
+    {
+       return $this->hasMany(ShopOrder::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOrdersWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrder
+     */            
+    public function getShopOrdersWithModifiedByMany()
+    {
+       return $this->getMany(ShopOrder::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrdersWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrdersWithModifiedBy()
+    {
+       return $this->hasMany(ShopOrder::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOrderItemsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrderItem
+     */            
+    public function getShopOrderItemsWithDeletedByMany()
+    {
+       return $this->getMany(ShopOrderItem::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrderItemsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrderItemsWithDeletedBy()
+    {
+       return $this->hasMany(ShopOrderItem::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOrderItemsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrderItem
+     */            
+    public function getShopOrderItemsWithCreatedByMany()
+    {
+       return $this->getMany(ShopOrderItem::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrderItemsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrderItemsWithCreatedBy()
+    {
+       return $this->hasMany(ShopOrderItem::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOrderItemsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrderItem
+     */            
+    public function getShopOrderItemsWithModifiedByMany()
+    {
+       return $this->getMany(ShopOrderItem::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrderItemsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrderItemsWithModifiedBy()
+    {
+       return $this->hasMany(ShopOrderItem::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOverviewsWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOverview
+     */            
+    public function getShopOverviewsWithUserCompanyIdMany()
+    {
+       return $this->getMany(ShopOverview::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOverviewsWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOverviewsWithUserCompanyId()
+    {
+       return $this->hasMany(ShopOverview::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOverviewsWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOverview
+     */            
+    public function getShopOverviewsWithUserIdMany()
+    {
+       return $this->getMany(ShopOverview::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOverviewsWithUserId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOverviewsWithUserId()
+    {
+       return $this->hasMany(ShopOverview::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOverviewsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOverview
+     */            
+    public function getShopOverviewsWithDeletedByMany()
+    {
+       return $this->getMany(ShopOverview::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOverviewsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOverviewsWithDeletedBy()
+    {
+       return $this->hasMany(ShopOverview::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOverviewsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOverview
+     */            
+    public function getShopOverviewsWithCreatedByMany()
+    {
+       return $this->getMany(ShopOverview::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOverviewsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOverviewsWithCreatedBy()
+    {
+       return $this->hasMany(ShopOverview::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOverviewsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOverview
+     */            
+    public function getShopOverviewsWithModifiedByMany()
+    {
+       return $this->getMany(ShopOverview::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOverviewsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOverviewsWithModifiedBy()
+    {
+       return $this->hasMany(ShopOverview::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopPackagingsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopPackaging
+     */            
+    public function getShopPackagingsWithDeletedByMany()
+    {
+       return $this->getMany(ShopPackaging::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopPackagingsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopPackagingsWithDeletedBy()
+    {
+       return $this->hasMany(ShopPackaging::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopPackagingsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopPackaging
+     */            
+    public function getShopPackagingsWithCreatedByMany()
+    {
+       return $this->getMany(ShopPackaging::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopPackagingsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopPackagingsWithCreatedBy()
+    {
+       return $this->hasMany(ShopPackaging::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopPackagingsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopPackaging
+     */            
+    public function getShopPackagingsWithModifiedByMany()
+    {
+       return $this->getMany(ShopPackaging::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopPackagingsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopPackagingsWithModifiedBy()
+    {
+       return $this->hasMany(ShopPackaging::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopPaymentsWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopPayment
+     */            
+    public function getShopPaymentsWithUserIdMany()
+    {
+       return $this->getMany(ShopPayment::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopPaymentsWithUserId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopPaymentsWithUserId()
+    {
+       return $this->hasMany(ShopPayment::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopPaymentsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopPayment
+     */            
+    public function getShopPaymentsWithDeletedByMany()
+    {
+       return $this->getMany(ShopPayment::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopPaymentsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopPaymentsWithDeletedBy()
+    {
+       return $this->hasMany(ShopPayment::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopPaymentsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopPayment
+     */            
+    public function getShopPaymentsWithCreatedByMany()
+    {
+       return $this->getMany(ShopPayment::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopPaymentsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopPaymentsWithCreatedBy()
+    {
+       return $this->hasMany(ShopPayment::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopPaymentsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopPayment
+     */            
+    public function getShopPaymentsWithModifiedByMany()
+    {
+       return $this->getMany(ShopPayment::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopPaymentsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopPaymentsWithModifiedBy()
+    {
+       return $this->hasMany(ShopPayment::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopProductsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopProduct
+     */            
+    public function getShopProductsWithDeletedByMany()
+    {
+       return $this->getMany(ShopProduct::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopProductsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopProductsWithDeletedBy()
+    {
+       return $this->hasMany(ShopProduct::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopProductsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopProduct
+     */            
+    public function getShopProductsWithCreatedByMany()
+    {
+       return $this->getMany(ShopProduct::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopProductsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopProductsWithCreatedBy()
+    {
+       return $this->hasMany(ShopProduct::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopProductsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopProduct
+     */            
+    public function getShopProductsWithModifiedByMany()
+    {
+       return $this->getMany(ShopProduct::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopProductsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopProductsWithModifiedBy()
+    {
+       return $this->hasMany(ShopProduct::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopQuestionsWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopQuestion
+     */            
+    public function getShopQuestionsWithUserCompanyIdMany()
+    {
+       return $this->getMany(ShopQuestion::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopQuestionsWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopQuestionsWithUserCompanyId()
+    {
+       return $this->hasMany(ShopQuestion::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopQuestionsWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopQuestion
+     */            
+    public function getShopQuestionsWithUserIdMany()
+    {
+       return $this->getMany(ShopQuestion::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopQuestionsWithUserId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopQuestionsWithUserId()
+    {
+       return $this->hasMany(ShopQuestion::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopQuestionsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopQuestion
+     */            
+    public function getShopQuestionsWithDeletedByMany()
+    {
+       return $this->getMany(ShopQuestion::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopQuestionsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopQuestionsWithDeletedBy()
+    {
+       return $this->hasMany(ShopQuestion::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopQuestionsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopQuestion
+     */            
+    public function getShopQuestionsWithCreatedByMany()
+    {
+       return $this->getMany(ShopQuestion::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopQuestionsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopQuestionsWithCreatedBy()
+    {
+       return $this->hasMany(ShopQuestion::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopQuestionsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopQuestion
+     */            
+    public function getShopQuestionsWithModifiedByMany()
+    {
+       return $this->getMany(ShopQuestion::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopQuestionsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopQuestionsWithModifiedBy()
+    {
+       return $this->hasMany(ShopQuestion::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopRejectCausesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopRejectCause
+     */            
+    public function getShopRejectCausesWithDeletedByMany()
+    {
+       return $this->getMany(ShopRejectCause::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopRejectCausesWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopRejectCausesWithDeletedBy()
+    {
+       return $this->hasMany(ShopRejectCause::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopRejectCausesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopRejectCause
+     */            
+    public function getShopRejectCausesWithCreatedByMany()
+    {
+       return $this->getMany(ShopRejectCause::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopRejectCausesWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopRejectCausesWithCreatedBy()
+    {
+       return $this->hasMany(ShopRejectCause::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopRejectCausesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopRejectCause
+     */            
+    public function getShopRejectCausesWithModifiedByMany()
+    {
+       return $this->getMany(ShopRejectCause::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopRejectCausesWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopRejectCausesWithModifiedBy()
+    {
+       return $this->hasMany(ShopRejectCause::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopReviewsWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopReview
+     */            
+    public function getShopReviewsWithUserCompanyIdMany()
+    {
+       return $this->getMany(ShopReview::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopReviewsWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopReviewsWithUserCompanyId()
+    {
+       return $this->hasMany(ShopReview::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopReviewsWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopReview
+     */            
+    public function getShopReviewsWithUserIdMany()
+    {
+       return $this->getMany(ShopReview::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopReviewsWithUserId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopReviewsWithUserId()
+    {
+       return $this->hasMany(ShopReview::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopReviewsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopReview
+     */            
+    public function getShopReviewsWithDeletedByMany()
+    {
+       return $this->getMany(ShopReview::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopReviewsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopReviewsWithDeletedBy()
+    {
+       return $this->hasMany(ShopReview::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopReviewsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopReview
+     */            
+    public function getShopReviewsWithCreatedByMany()
+    {
+       return $this->getMany(ShopReview::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopReviewsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopReviewsWithCreatedBy()
+    {
+       return $this->hasMany(ShopReview::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopReviewsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopReview
+     */            
+    public function getShopReviewsWithModifiedByMany()
+    {
+       return $this->getMany(ShopReview::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopReviewsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopReviewsWithModifiedBy()
+    {
+       return $this->hasMany(ShopReview::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopReviewOptionsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopReviewOption
+     */            
+    public function getShopReviewOptionsWithDeletedByMany()
+    {
+       return $this->getMany(ShopReviewOption::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopReviewOptionsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopReviewOptionsWithDeletedBy()
+    {
+       return $this->hasMany(ShopReviewOption::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopReviewOptionsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopReviewOption
+     */            
+    public function getShopReviewOptionsWithCreatedByMany()
+    {
+       return $this->getMany(ShopReviewOption::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopReviewOptionsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopReviewOptionsWithCreatedBy()
+    {
+       return $this->hasMany(ShopReviewOption::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopReviewOptionsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopReviewOption
+     */            
+    public function getShopReviewOptionsWithModifiedByMany()
+    {
+       return $this->getMany(ShopReviewOption::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopReviewOptionsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopReviewOptionsWithModifiedBy()
+    {
+       return $this->hasMany(ShopReviewOption::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopShipmentsWithResponsibleMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopShipment
+     */            
+    public function getShopShipmentsWithResponsibleMany()
+    {
+       return $this->getMany(ShopShipment::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopShipmentsWithResponsible
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopShipmentsWithResponsible()
+    {
+       return $this->hasMany(ShopShipment::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopShipmentsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopShipment
+     */            
+    public function getShopShipmentsWithDeletedByMany()
+    {
+       return $this->getMany(ShopShipment::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopShipmentsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopShipmentsWithDeletedBy()
+    {
+       return $this->hasMany(ShopShipment::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopShipmentsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopShipment
+     */            
+    public function getShopShipmentsWithCreatedByMany()
+    {
+       return $this->getMany(ShopShipment::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopShipmentsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopShipmentsWithCreatedBy()
+    {
+       return $this->hasMany(ShopShipment::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopShipmentsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopShipment
+     */            
+    public function getShopShipmentsWithModifiedByMany()
+    {
+       return $this->getMany(ShopShipment::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopShipmentsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopShipmentsWithModifiedBy()
+    {
+       return $this->hasMany(ShopShipment::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWaresWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|Ware
+     */            
+    public function getWaresWithDeletedByMany()
+    {
+       return $this->getMany(Ware::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWaresWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWaresWithDeletedBy()
+    {
+       return $this->hasMany(Ware::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWaresWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|Ware
+     */            
+    public function getWaresWithCreatedByMany()
+    {
+       return $this->getMany(Ware::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWaresWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWaresWithCreatedBy()
+    {
+       return $this->hasMany(Ware::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWaresWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|Ware
+     */            
+    public function getWaresWithModifiedByMany()
+    {
+       return $this->getMany(Ware::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWaresWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWaresWithModifiedBy()
+    {
+       return $this->hasMany(Ware::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareAcceptsWithResponsibleMany
+     * @return  null|\yii\db\ActiveRecord[]|WareAccept
+     */            
+    public function getWareAcceptsWithResponsibleMany()
+    {
+       return $this->getMany(WareAccept::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareAcceptsWithResponsible
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareAcceptsWithResponsible()
+    {
+       return $this->hasMany(WareAccept::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareAcceptsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareAccept
+     */            
+    public function getWareAcceptsWithDeletedByMany()
+    {
+       return $this->getMany(WareAccept::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareAcceptsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareAcceptsWithDeletedBy()
+    {
+       return $this->hasMany(WareAccept::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareAcceptsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareAccept
+     */            
+    public function getWareAcceptsWithCreatedByMany()
+    {
+       return $this->getMany(WareAccept::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareAcceptsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareAcceptsWithCreatedBy()
+    {
+       return $this->hasMany(WareAccept::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareAcceptsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareAccept
+     */            
+    public function getWareAcceptsWithModifiedByMany()
+    {
+       return $this->getMany(WareAccept::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareAcceptsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareAcceptsWithModifiedBy()
+    {
+       return $this->hasMany(WareAccept::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareEntersWithResponsibleMany
+     * @return  null|\yii\db\ActiveRecord[]|WareEnter
+     */            
+    public function getWareEntersWithResponsibleMany()
+    {
+       return $this->getMany(WareEnter::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareEntersWithResponsible
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareEntersWithResponsible()
+    {
+       return $this->hasMany(WareEnter::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareEntersWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareEnter
+     */            
+    public function getWareEntersWithDeletedByMany()
+    {
+       return $this->getMany(WareEnter::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareEntersWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareEntersWithDeletedBy()
+    {
+       return $this->hasMany(WareEnter::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareEntersWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareEnter
+     */            
+    public function getWareEntersWithCreatedByMany()
+    {
+       return $this->getMany(WareEnter::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareEntersWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareEntersWithCreatedBy()
+    {
+       return $this->hasMany(WareEnter::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareEntersWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareEnter
+     */            
+    public function getWareEntersWithModifiedByMany()
+    {
+       return $this->getMany(WareEnter::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareEntersWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareEntersWithModifiedBy()
+    {
+       return $this->hasMany(WareEnter::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareEnterItemsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareEnterItem
+     */            
+    public function getWareEnterItemsWithDeletedByMany()
+    {
+       return $this->getMany(WareEnterItem::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareEnterItemsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareEnterItemsWithDeletedBy()
+    {
+       return $this->hasMany(WareEnterItem::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareEnterItemsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareEnterItem
+     */            
+    public function getWareEnterItemsWithCreatedByMany()
+    {
+       return $this->getMany(WareEnterItem::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareEnterItemsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareEnterItemsWithCreatedBy()
+    {
+       return $this->hasMany(WareEnterItem::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareEnterItemsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareEnterItem
+     */            
+    public function getWareEnterItemsWithModifiedByMany()
+    {
+       return $this->getMany(WareEnterItem::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareEnterItemsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareEnterItemsWithModifiedBy()
+    {
+       return $this->hasMany(WareEnterItem::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareExitsWithResponsibleMany
+     * @return  null|\yii\db\ActiveRecord[]|WareExit
+     */            
+    public function getWareExitsWithResponsibleMany()
+    {
+       return $this->getMany(WareExit::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareExitsWithResponsible
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareExitsWithResponsible()
+    {
+       return $this->hasMany(WareExit::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareExitsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareExit
+     */            
+    public function getWareExitsWithDeletedByMany()
+    {
+       return $this->getMany(WareExit::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareExitsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareExitsWithDeletedBy()
+    {
+       return $this->hasMany(WareExit::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareExitsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareExit
+     */            
+    public function getWareExitsWithCreatedByMany()
+    {
+       return $this->getMany(WareExit::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareExitsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareExitsWithCreatedBy()
+    {
+       return $this->hasMany(WareExit::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareExitsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareExit
+     */            
+    public function getWareExitsWithModifiedByMany()
+    {
+       return $this->getMany(WareExit::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareExitsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareExitsWithModifiedBy()
+    {
+       return $this->hasMany(WareExit::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareExitItemsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareExitItem
+     */            
+    public function getWareExitItemsWithDeletedByMany()
+    {
+       return $this->getMany(WareExitItem::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareExitItemsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareExitItemsWithDeletedBy()
+    {
+       return $this->hasMany(WareExitItem::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareExitItemsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareExitItem
+     */            
+    public function getWareExitItemsWithCreatedByMany()
+    {
+       return $this->getMany(WareExitItem::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareExitItemsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareExitItemsWithCreatedBy()
+    {
+       return $this->hasMany(WareExitItem::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareExitItemsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareExitItem
+     */            
+    public function getWareExitItemsWithModifiedByMany()
+    {
+       return $this->getMany(WareExitItem::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareExitItemsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareExitItemsWithModifiedBy()
+    {
+       return $this->hasMany(WareExitItem::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareReturnsWithResponsibleMany
+     * @return  null|\yii\db\ActiveRecord[]|WareReturn
+     */            
+    public function getWareReturnsWithResponsibleMany()
+    {
+       return $this->getMany(WareReturn::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareReturnsWithResponsible
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareReturnsWithResponsible()
+    {
+       return $this->hasMany(WareReturn::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareReturnsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareReturn
+     */            
+    public function getWareReturnsWithDeletedByMany()
+    {
+       return $this->getMany(WareReturn::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareReturnsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareReturnsWithDeletedBy()
+    {
+       return $this->hasMany(WareReturn::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareReturnsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareReturn
+     */            
+    public function getWareReturnsWithCreatedByMany()
+    {
+       return $this->getMany(WareReturn::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareReturnsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareReturnsWithCreatedBy()
+    {
+       return $this->hasMany(WareReturn::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareReturnsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareReturn
+     */            
+    public function getWareReturnsWithModifiedByMany()
+    {
+       return $this->getMany(WareReturn::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareReturnsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareReturnsWithModifiedBy()
+    {
+       return $this->hasMany(WareReturn::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareSeriesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareSeries
+     */            
+    public function getWareSeriesWithDeletedByMany()
+    {
+       return $this->getMany(WareSeries::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareSeriesWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareSeriesWithDeletedBy()
+    {
+       return $this->hasMany(WareSeries::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareSeriesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareSeries
+     */            
+    public function getWareSeriesWithCreatedByMany()
+    {
+       return $this->getMany(WareSeries::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareSeriesWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareSeriesWithCreatedBy()
+    {
+       return $this->hasMany(WareSeries::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareSeriesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareSeries
+     */            
+    public function getWareSeriesWithModifiedByMany()
+    {
+       return $this->getMany(WareSeries::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareSeriesWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareSeriesWithModifiedBy()
+    {
+       return $this->hasMany(WareSeries::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareTransWithResponsibleMany
+     * @return  null|\yii\db\ActiveRecord[]|WareTrans
+     */            
+    public function getWareTransWithResponsibleMany()
+    {
+       return $this->getMany(WareTrans::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareTransWithResponsible
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareTransWithResponsible()
+    {
+       return $this->hasMany(WareTrans::class, [
+            'responsible' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareTransWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareTrans
+     */            
+    public function getWareTransWithDeletedByMany()
+    {
+       return $this->getMany(WareTrans::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareTransWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareTransWithDeletedBy()
+    {
+       return $this->hasMany(WareTrans::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareTransWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareTrans
+     */            
+    public function getWareTransWithCreatedByMany()
+    {
+       return $this->getMany(WareTrans::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareTransWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareTransWithCreatedBy()
+    {
+       return $this->hasMany(WareTrans::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareTransWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareTrans
+     */            
+    public function getWareTransWithModifiedByMany()
+    {
+       return $this->getMany(WareTrans::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareTransWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareTransWithModifiedBy()
+    {
+       return $this->hasMany(WareTrans::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareTransItemsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareTransItem
+     */            
+    public function getWareTransItemsWithDeletedByMany()
+    {
+       return $this->getMany(WareTransItem::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareTransItemsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareTransItemsWithDeletedBy()
+    {
+       return $this->hasMany(WareTransItem::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareTransItemsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareTransItem
+     */            
+    public function getWareTransItemsWithCreatedByMany()
+    {
+       return $this->getMany(WareTransItem::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareTransItemsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareTransItemsWithCreatedBy()
+    {
+       return $this->hasMany(WareTransItem::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareTransItemsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|WareTransItem
+     */            
+    public function getWareTransItemsWithModifiedByMany()
+    {
+       return $this->getMany(WareTransItem::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareTransItemsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareTransItemsWithModifiedBy()
+    {
+       return $this->hasMany(WareTransItem::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getAutosWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|Auto
+     */            
+    public function getAutosWithDeletedByMany()
+    {
+       return $this->getMany(Auto::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getAutosWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getAutosWithDeletedBy()
+    {
+       return $this->hasMany(Auto::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getAutosWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|Auto
+     */            
+    public function getAutosWithCreatedByMany()
+    {
+       return $this->getMany(Auto::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getAutosWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getAutosWithCreatedBy()
+    {
+       return $this->hasMany(Auto::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getAutosWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|Auto
+     */            
+    public function getAutosWithModifiedByMany()
+    {
+       return $this->getMany(Auto::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getAutosWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getAutosWithModifiedBy()
+    {
+       return $this->hasMany(Auto::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getAutoModelsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|AutoModel
+     */            
+    public function getAutoModelsWithDeletedByMany()
+    {
+       return $this->getMany(AutoModel::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getAutoModelsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getAutoModelsWithDeletedBy()
+    {
+       return $this->hasMany(AutoModel::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getAutoModelsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|AutoModel
+     */            
+    public function getAutoModelsWithCreatedByMany()
+    {
+       return $this->getMany(AutoModel::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getAutoModelsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getAutoModelsWithCreatedBy()
+    {
+       return $this->hasMany(AutoModel::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getAutoModelsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|AutoModel
+     */            
+    public function getAutoModelsWithModifiedByMany()
+    {
+       return $this->getMany(AutoModel::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getAutoModelsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getAutoModelsWithModifiedBy()
+    {
+       return $this->hasMany(AutoModel::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getAutoMotorsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|AutoMotor
+     */            
+    public function getAutoMotorsWithDeletedByMany()
+    {
+       return $this->getMany(AutoMotor::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getAutoMotorsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getAutoMotorsWithDeletedBy()
+    {
+       return $this->hasMany(AutoMotor::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getAutoMotorsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|AutoMotor
+     */            
+    public function getAutoMotorsWithCreatedByMany()
+    {
+       return $this->getMany(AutoMotor::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getAutoMotorsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getAutoMotorsWithCreatedBy()
+    {
+       return $this->hasMany(AutoMotor::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getAutoMotorsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|AutoMotor
+     */            
+    public function getAutoMotorsWithModifiedByMany()
+    {
+       return $this->getMany(AutoMotor::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getAutoMotorsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getAutoMotorsWithModifiedBy()
+    {
+       return $this->hasMany(AutoMotor::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getAutoTypesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|AutoType
+     */            
+    public function getAutoTypesWithDeletedByMany()
+    {
+       return $this->getMany(AutoType::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getAutoTypesWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getAutoTypesWithDeletedBy()
+    {
+       return $this->hasMany(AutoType::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getAutoTypesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|AutoType
+     */            
+    public function getAutoTypesWithCreatedByMany()
+    {
+       return $this->getMany(AutoType::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getAutoTypesWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getAutoTypesWithCreatedBy()
+    {
+       return $this->hasMany(AutoType::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getAutoTypesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|AutoType
+     */            
+    public function getAutoTypesWithModifiedByMany()
+    {
+       return $this->getMany(AutoType::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getAutoTypesWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getAutoTypesWithModifiedBy()
+    {
+       return $this->hasMany(AutoType::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
      * Function  getPaysCurrenciesWithDeletedByMany
      * @return  null|\yii\db\ActiveRecord[]|PaysCurrency
      */            
@@ -2617,6 +6253,798 @@ class User extends ZActiveRecord
     {
        return $this->hasMany(PaysWithdraw::class, [
             'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getDiscAmountsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|DiscAmount
+     */            
+    public function getDiscAmountsWithDeletedByMany()
+    {
+       return $this->getMany(DiscAmount::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getDiscAmountsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getDiscAmountsWithDeletedBy()
+    {
+       return $this->hasMany(DiscAmount::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getDiscAmountsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|DiscAmount
+     */            
+    public function getDiscAmountsWithCreatedByMany()
+    {
+       return $this->getMany(DiscAmount::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getDiscAmountsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getDiscAmountsWithCreatedBy()
+    {
+       return $this->hasMany(DiscAmount::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getDiscAmountsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|DiscAmount
+     */            
+    public function getDiscAmountsWithModifiedByMany()
+    {
+       return $this->getMany(DiscAmount::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getDiscAmountsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getDiscAmountsWithModifiedBy()
+    {
+       return $this->hasMany(DiscAmount::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsAdminsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsAdmin
+     */            
+    public function getCallsAdminsWithDeletedByMany()
+    {
+       return $this->getMany(CallsAdmin::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsAdminsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsAdminsWithDeletedBy()
+    {
+       return $this->hasMany(CallsAdmin::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsAdminsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsAdmin
+     */            
+    public function getCallsAdminsWithCreatedByMany()
+    {
+       return $this->getMany(CallsAdmin::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsAdminsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsAdminsWithCreatedBy()
+    {
+       return $this->hasMany(CallsAdmin::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsAdminsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsAdmin
+     */            
+    public function getCallsAdminsWithModifiedByMany()
+    {
+       return $this->getMany(CallsAdmin::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsAdminsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsAdminsWithModifiedBy()
+    {
+       return $this->hasMany(CallsAdmin::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsCdrsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsCdr
+     */            
+    public function getCallsCdrsWithDeletedByMany()
+    {
+       return $this->getMany(CallsCdr::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsCdrsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsCdrsWithDeletedBy()
+    {
+       return $this->hasMany(CallsCdr::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsCelsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsCel
+     */            
+    public function getCallsCelsWithDeletedByMany()
+    {
+       return $this->getMany(CallsCel::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsCelsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsCelsWithDeletedBy()
+    {
+       return $this->hasMany(CallsCel::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsExtensWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsExtens
+     */            
+    public function getCallsExtensWithDeletedByMany()
+    {
+       return $this->getMany(CallsExtens::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsExtensWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsExtensWithDeletedBy()
+    {
+       return $this->hasMany(CallsExtens::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsExtensWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsExtens
+     */            
+    public function getCallsExtensWithCreatedByMany()
+    {
+       return $this->getMany(CallsExtens::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsExtensWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsExtensWithCreatedBy()
+    {
+       return $this->hasMany(CallsExtens::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsExtensWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsExtens
+     */            
+    public function getCallsExtensWithModifiedByMany()
+    {
+       return $this->getMany(CallsExtens::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsExtensWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsExtensWithModifiedBy()
+    {
+       return $this->hasMany(CallsExtens::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsIvrsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsIvr
+     */            
+    public function getCallsIvrsWithDeletedByMany()
+    {
+       return $this->getMany(CallsIvr::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsIvrsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsIvrsWithDeletedBy()
+    {
+       return $this->hasMany(CallsIvr::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsIvrsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsIvr
+     */            
+    public function getCallsIvrsWithCreatedByMany()
+    {
+       return $this->getMany(CallsIvr::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsIvrsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsIvrsWithCreatedBy()
+    {
+       return $this->hasMany(CallsIvr::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsIvrsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsIvr
+     */            
+    public function getCallsIvrsWithModifiedByMany()
+    {
+       return $this->getMany(CallsIvr::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsIvrsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsIvrsWithModifiedBy()
+    {
+       return $this->hasMany(CallsIvr::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsOrdersWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsOrder
+     */            
+    public function getCallsOrdersWithUserIdMany()
+    {
+       return $this->getMany(CallsOrder::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsOrdersWithUserId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsOrdersWithUserId()
+    {
+       return $this->hasMany(CallsOrder::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsOrdersWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsOrder
+     */            
+    public function getCallsOrdersWithDeletedByMany()
+    {
+       return $this->getMany(CallsOrder::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsOrdersWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsOrdersWithDeletedBy()
+    {
+       return $this->hasMany(CallsOrder::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsOrdersWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsOrder
+     */            
+    public function getCallsOrdersWithCreatedByMany()
+    {
+       return $this->getMany(CallsOrder::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsOrdersWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsOrdersWithCreatedBy()
+    {
+       return $this->hasMany(CallsOrder::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsOrdersWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsOrder
+     */            
+    public function getCallsOrdersWithModifiedByMany()
+    {
+       return $this->getMany(CallsOrder::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsOrdersWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsOrdersWithModifiedBy()
+    {
+       return $this->hasMany(CallsOrder::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsQueuesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsQueue
+     */            
+    public function getCallsQueuesWithDeletedByMany()
+    {
+       return $this->getMany(CallsQueue::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsQueuesWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsQueuesWithDeletedBy()
+    {
+       return $this->hasMany(CallsQueue::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsQueuesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsQueue
+     */            
+    public function getCallsQueuesWithCreatedByMany()
+    {
+       return $this->getMany(CallsQueue::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsQueuesWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsQueuesWithCreatedBy()
+    {
+       return $this->hasMany(CallsQueue::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsQueuesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsQueue
+     */            
+    public function getCallsQueuesWithModifiedByMany()
+    {
+       return $this->getMany(CallsQueue::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsQueuesWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsQueuesWithModifiedBy()
+    {
+       return $this->hasMany(CallsQueue::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsRecordsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsRecord
+     */            
+    public function getCallsRecordsWithDeletedByMany()
+    {
+       return $this->getMany(CallsRecord::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsRecordsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsRecordsWithDeletedBy()
+    {
+       return $this->hasMany(CallsRecord::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsRecordsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsRecord
+     */            
+    public function getCallsRecordsWithCreatedByMany()
+    {
+       return $this->getMany(CallsRecord::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsRecordsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsRecordsWithCreatedBy()
+    {
+       return $this->hasMany(CallsRecord::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsRecordsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsRecord
+     */            
+    public function getCallsRecordsWithModifiedByMany()
+    {
+       return $this->getMany(CallsRecord::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsRecordsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsRecordsWithModifiedBy()
+    {
+       return $this->hasMany(CallsRecord::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsStatusesWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsStatus
+     */            
+    public function getCallsStatusesWithUserIdMany()
+    {
+       return $this->getMany(CallsStatus::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsStatusesWithUserId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsStatusesWithUserId()
+    {
+       return $this->hasMany(CallsStatus::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsStatusesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsStatus
+     */            
+    public function getCallsStatusesWithDeletedByMany()
+    {
+       return $this->getMany(CallsStatus::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsStatusesWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsStatusesWithDeletedBy()
+    {
+       return $this->hasMany(CallsStatus::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsStatusesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsStatus
+     */            
+    public function getCallsStatusesWithCreatedByMany()
+    {
+       return $this->getMany(CallsStatus::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsStatusesWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsStatusesWithCreatedBy()
+    {
+       return $this->hasMany(CallsStatus::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsStatusesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsStatus
+     */            
+    public function getCallsStatusesWithModifiedByMany()
+    {
+       return $this->getMany(CallsStatus::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsStatusesWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsStatusesWithModifiedBy()
+    {
+       return $this->hasMany(CallsStatus::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsStatusTimesWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsStatusTime
+     */            
+    public function getCallsStatusTimesWithUserIdMany()
+    {
+       return $this->getMany(CallsStatusTime::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsStatusTimesWithUserId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsStatusTimesWithUserId()
+    {
+       return $this->hasMany(CallsStatusTime::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsStatusTimesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsStatusTime
+     */            
+    public function getCallsStatusTimesWithDeletedByMany()
+    {
+       return $this->getMany(CallsStatusTime::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsStatusTimesWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsStatusTimesWithDeletedBy()
+    {
+       return $this->hasMany(CallsStatusTime::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsStatusTimesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsStatusTime
+     */            
+    public function getCallsStatusTimesWithCreatedByMany()
+    {
+       return $this->getMany(CallsStatusTime::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsStatusTimesWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsStatusTimesWithCreatedBy()
+    {
+       return $this->hasMany(CallsStatusTime::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsStatusTimesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsStatusTime
+     */            
+    public function getCallsStatusTimesWithModifiedByMany()
+    {
+       return $this->getMany(CallsStatusTime::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsStatusTimesWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsStatusTimesWithModifiedBy()
+    {
+       return $this->hasMany(CallsStatusTime::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCallsUsermenWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CallsUserman
+     */            
+    public function getCallsUsermenWithDeletedByMany()
+    {
+       return $this->getMany(CallsUserman::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCallsUsermenWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCallsUsermenWithDeletedBy()
+    {
+       return $this->hasMany(CallsUserman::class, [
+            'deleted_by' => 'id',
         ]);     
     }
 
@@ -7638,6 +12066,78 @@ class User extends ZActiveRecord
 
     /**
      *
+     * Function  getTreeProductsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|TreeProduct
+     */            
+    public function getTreeProductsWithDeletedByMany()
+    {
+       return $this->getMany(TreeProduct::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getTreeProductsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getTreeProductsWithDeletedBy()
+    {
+       return $this->hasMany(TreeProduct::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getTreeProductsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|TreeProduct
+     */            
+    public function getTreeProductsWithCreatedByMany()
+    {
+       return $this->getMany(TreeProduct::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getTreeProductsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getTreeProductsWithCreatedBy()
+    {
+       return $this->hasMany(TreeProduct::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getTreeProductsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|TreeProduct
+     */            
+    public function getTreeProductsWithModifiedByMany()
+    {
+       return $this->getMany(TreeProduct::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getTreeProductsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getTreeProductsWithModifiedBy()
+    {
+       return $this->hasMany(TreeProduct::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
      * Function  getGovsDegreesWithDeletedByMany
      * @return  null|\yii\db\ActiveRecord[]|GovsDegree
      */            
@@ -7926,1224 +12426,1128 @@ class User extends ZActiveRecord
 
     /**
      *
-     * Function  getEyufCompatriotsWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufCompatriot
+     * Function  getDoftDriversWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|DoftDrivers
      */            
-    public function getEyufCompatriotsWithDeletedByMany()
+    public function getDoftDriversWithDeletedByMany()
     {
-       return $this->getMany(EyufCompatriot::class, [
+       return $this->getMany(DoftDrivers::class, [
             'deleted_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufCompatriotsWithDeletedBy
+     * Function  getDoftDriversWithDeletedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufCompatriotsWithDeletedBy()
+    public function getDoftDriversWithDeletedBy()
     {
-       return $this->hasMany(EyufCompatriot::class, [
+       return $this->hasMany(DoftDrivers::class, [
             'deleted_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufCompatriotsWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufCompatriot
+     * Function  getDoftDriversWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|DoftDrivers
      */            
-    public function getEyufCompatriotsWithCreatedByMany()
+    public function getDoftDriversWithCreatedByMany()
     {
-       return $this->getMany(EyufCompatriot::class, [
+       return $this->getMany(DoftDrivers::class, [
             'created_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufCompatriotsWithCreatedBy
+     * Function  getDoftDriversWithCreatedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufCompatriotsWithCreatedBy()
+    public function getDoftDriversWithCreatedBy()
     {
-       return $this->hasMany(EyufCompatriot::class, [
+       return $this->hasMany(DoftDrivers::class, [
             'created_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufCompatriotsWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufCompatriot
+     * Function  getDoftDriversWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|DoftDrivers
      */            
-    public function getEyufCompatriotsWithModifiedByMany()
+    public function getDoftDriversWithModifiedByMany()
     {
-       return $this->getMany(EyufCompatriot::class, [
+       return $this->getMany(DoftDrivers::class, [
             'modified_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufCompatriotsWithModifiedBy
+     * Function  getDoftDriversWithModifiedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufCompatriotsWithModifiedBy()
+    public function getDoftDriversWithModifiedBy()
     {
-       return $this->hasMany(EyufCompatriot::class, [
+       return $this->hasMany(DoftDrivers::class, [
             'modified_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufDocumentsWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufDocument
+     * Function  getDoftShippersWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|DoftShippers
      */            
-    public function getEyufDocumentsWithDeletedByMany()
+    public function getDoftShippersWithDeletedByMany()
     {
-       return $this->getMany(EyufDocument::class, [
+       return $this->getMany(DoftShippers::class, [
             'deleted_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufDocumentsWithDeletedBy
+     * Function  getDoftShippersWithDeletedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufDocumentsWithDeletedBy()
+    public function getDoftShippersWithDeletedBy()
     {
-       return $this->hasMany(EyufDocument::class, [
+       return $this->hasMany(DoftShippers::class, [
             'deleted_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufDocumentsWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufDocument
+     * Function  getDoftShippersWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|DoftShippers
      */            
-    public function getEyufDocumentsWithCreatedByMany()
+    public function getDoftShippersWithCreatedByMany()
     {
-       return $this->getMany(EyufDocument::class, [
+       return $this->getMany(DoftShippers::class, [
             'created_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufDocumentsWithCreatedBy
+     * Function  getDoftShippersWithCreatedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufDocumentsWithCreatedBy()
+    public function getDoftShippersWithCreatedBy()
     {
-       return $this->hasMany(EyufDocument::class, [
+       return $this->hasMany(DoftShippers::class, [
             'created_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufDocumentsWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufDocument
+     * Function  getDoftShippersWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|DoftShippers
      */            
-    public function getEyufDocumentsWithModifiedByMany()
+    public function getDoftShippersWithModifiedByMany()
     {
-       return $this->getMany(EyufDocument::class, [
+       return $this->getMany(DoftShippers::class, [
             'modified_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufDocumentsWithModifiedBy
+     * Function  getDoftShippersWithModifiedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufDocumentsWithModifiedBy()
+    public function getDoftShippersWithModifiedBy()
     {
-       return $this->hasMany(EyufDocument::class, [
+       return $this->hasMany(DoftShippers::class, [
             'modified_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufDocumentTypesWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufDocumentType
+     * Function  getDoftSignupsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|DoftSignup
      */            
-    public function getEyufDocumentTypesWithDeletedByMany()
+    public function getDoftSignupsWithDeletedByMany()
     {
-       return $this->getMany(EyufDocumentType::class, [
+       return $this->getMany(DoftSignup::class, [
             'deleted_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufDocumentTypesWithDeletedBy
+     * Function  getDoftSignupsWithDeletedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufDocumentTypesWithDeletedBy()
+    public function getDoftSignupsWithDeletedBy()
     {
-       return $this->hasMany(EyufDocumentType::class, [
+       return $this->hasMany(DoftSignup::class, [
             'deleted_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufDocumentTypesWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufDocumentType
+     * Function  getDoftSignupsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|DoftSignup
      */            
-    public function getEyufDocumentTypesWithCreatedByMany()
+    public function getDoftSignupsWithCreatedByMany()
     {
-       return $this->getMany(EyufDocumentType::class, [
+       return $this->getMany(DoftSignup::class, [
             'created_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufDocumentTypesWithCreatedBy
+     * Function  getDoftSignupsWithCreatedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufDocumentTypesWithCreatedBy()
+    public function getDoftSignupsWithCreatedBy()
     {
-       return $this->hasMany(EyufDocumentType::class, [
+       return $this->hasMany(DoftSignup::class, [
             'created_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufDocumentTypesWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufDocumentType
+     * Function  getDoftSignupsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|DoftSignup
      */            
-    public function getEyufDocumentTypesWithModifiedByMany()
+    public function getDoftSignupsWithModifiedByMany()
     {
-       return $this->getMany(EyufDocumentType::class, [
+       return $this->getMany(DoftSignup::class, [
             'modified_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufDocumentTypesWithModifiedBy
+     * Function  getDoftSignupsWithModifiedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufDocumentTypesWithModifiedBy()
+    public function getDoftSignupsWithModifiedBy()
     {
-       return $this->hasMany(EyufDocumentType::class, [
+       return $this->hasMany(DoftSignup::class, [
             'modified_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufFilesWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufFile
+     * Function  getCpasCompaniesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasCompany
      */            
-    public function getEyufFilesWithDeletedByMany()
+    public function getCpasCompaniesWithDeletedByMany()
     {
-       return $this->getMany(EyufFile::class, [
+       return $this->getMany(CpasCompany::class, [
             'deleted_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufFilesWithDeletedBy
+     * Function  getCpasCompaniesWithDeletedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufFilesWithDeletedBy()
+    public function getCpasCompaniesWithDeletedBy()
     {
-       return $this->hasMany(EyufFile::class, [
+       return $this->hasMany(CpasCompany::class, [
             'deleted_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufFilesWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufFile
+     * Function  getCpasCompaniesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasCompany
      */            
-    public function getEyufFilesWithCreatedByMany()
+    public function getCpasCompaniesWithCreatedByMany()
     {
-       return $this->getMany(EyufFile::class, [
+       return $this->getMany(CpasCompany::class, [
             'created_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufFilesWithCreatedBy
+     * Function  getCpasCompaniesWithCreatedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufFilesWithCreatedBy()
+    public function getCpasCompaniesWithCreatedBy()
     {
-       return $this->hasMany(EyufFile::class, [
+       return $this->hasMany(CpasCompany::class, [
             'created_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufFilesWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufFile
+     * Function  getCpasCompaniesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasCompany
      */            
-    public function getEyufFilesWithModifiedByMany()
+    public function getCpasCompaniesWithModifiedByMany()
     {
-       return $this->getMany(EyufFile::class, [
+       return $this->getMany(CpasCompany::class, [
             'modified_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufFilesWithModifiedBy
+     * Function  getCpasCompaniesWithModifiedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufFilesWithModifiedBy()
+    public function getCpasCompaniesWithModifiedBy()
     {
-       return $this->hasMany(EyufFile::class, [
+       return $this->hasMany(CpasCompany::class, [
             'modified_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufInvoicesWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufInvoice
+     * Function  getCpasLandsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasLand
      */            
-    public function getEyufInvoicesWithDeletedByMany()
+    public function getCpasLandsWithDeletedByMany()
     {
-       return $this->getMany(EyufInvoice::class, [
+       return $this->getMany(CpasLand::class, [
             'deleted_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufInvoicesWithDeletedBy
+     * Function  getCpasLandsWithDeletedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufInvoicesWithDeletedBy()
+    public function getCpasLandsWithDeletedBy()
     {
-       return $this->hasMany(EyufInvoice::class, [
+       return $this->hasMany(CpasLand::class, [
             'deleted_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufInvoicesWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufInvoice
+     * Function  getCpasLandsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasLand
      */            
-    public function getEyufInvoicesWithCreatedByMany()
+    public function getCpasLandsWithCreatedByMany()
     {
-       return $this->getMany(EyufInvoice::class, [
+       return $this->getMany(CpasLand::class, [
             'created_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufInvoicesWithCreatedBy
+     * Function  getCpasLandsWithCreatedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufInvoicesWithCreatedBy()
+    public function getCpasLandsWithCreatedBy()
     {
-       return $this->hasMany(EyufInvoice::class, [
+       return $this->hasMany(CpasLand::class, [
             'created_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufInvoicesWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufInvoice
+     * Function  getCpasLandsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasLand
      */            
-    public function getEyufInvoicesWithModifiedByMany()
+    public function getCpasLandsWithModifiedByMany()
     {
-       return $this->getMany(EyufInvoice::class, [
+       return $this->getMany(CpasLand::class, [
             'modified_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufInvoicesWithModifiedBy
+     * Function  getCpasLandsWithModifiedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufInvoicesWithModifiedBy()
+    public function getCpasLandsWithModifiedBy()
     {
-       return $this->hasMany(EyufInvoice::class, [
+       return $this->hasMany(CpasLand::class, [
             'modified_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufInvoiceTypesWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufInvoiceType
+     * Function  getCpasOffersWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasOffer
      */            
-    public function getEyufInvoiceTypesWithDeletedByMany()
+    public function getCpasOffersWithDeletedByMany()
     {
-       return $this->getMany(EyufInvoiceType::class, [
+       return $this->getMany(CpasOffer::class, [
             'deleted_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufInvoiceTypesWithDeletedBy
+     * Function  getCpasOffersWithDeletedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufInvoiceTypesWithDeletedBy()
+    public function getCpasOffersWithDeletedBy()
     {
-       return $this->hasMany(EyufInvoiceType::class, [
+       return $this->hasMany(CpasOffer::class, [
             'deleted_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufInvoiceTypesWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufInvoiceType
+     * Function  getCpasOffersWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasOffer
      */            
-    public function getEyufInvoiceTypesWithCreatedByMany()
+    public function getCpasOffersWithCreatedByMany()
     {
-       return $this->getMany(EyufInvoiceType::class, [
+       return $this->getMany(CpasOffer::class, [
             'created_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufInvoiceTypesWithCreatedBy
+     * Function  getCpasOffersWithCreatedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufInvoiceTypesWithCreatedBy()
+    public function getCpasOffersWithCreatedBy()
     {
-       return $this->hasMany(EyufInvoiceType::class, [
+       return $this->hasMany(CpasOffer::class, [
             'created_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufInvoiceTypesWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufInvoiceType
+     * Function  getCpasOffersWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasOffer
      */            
-    public function getEyufInvoiceTypesWithModifiedByMany()
+    public function getCpasOffersWithModifiedByMany()
     {
-       return $this->getMany(EyufInvoiceType::class, [
+       return $this->getMany(CpasOffer::class, [
             'modified_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufInvoiceTypesWithModifiedBy
+     * Function  getCpasOffersWithModifiedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufInvoiceTypesWithModifiedBy()
+    public function getCpasOffersWithModifiedBy()
     {
-       return $this->hasMany(EyufInvoiceType::class, [
+       return $this->hasMany(CpasOffer::class, [
             'modified_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufManualsWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufManual
+     * Function  getCpasOfferItemsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasOfferItem
      */            
-    public function getEyufManualsWithDeletedByMany()
+    public function getCpasOfferItemsWithDeletedByMany()
     {
-       return $this->getMany(EyufManual::class, [
+       return $this->getMany(CpasOfferItem::class, [
             'deleted_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufManualsWithDeletedBy
+     * Function  getCpasOfferItemsWithDeletedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufManualsWithDeletedBy()
+    public function getCpasOfferItemsWithDeletedBy()
     {
-       return $this->hasMany(EyufManual::class, [
+       return $this->hasMany(CpasOfferItem::class, [
             'deleted_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufManualsWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufManual
+     * Function  getCpasOfferItemsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasOfferItem
      */            
-    public function getEyufManualsWithCreatedByMany()
+    public function getCpasOfferItemsWithCreatedByMany()
     {
-       return $this->getMany(EyufManual::class, [
+       return $this->getMany(CpasOfferItem::class, [
             'created_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufManualsWithCreatedBy
+     * Function  getCpasOfferItemsWithCreatedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufManualsWithCreatedBy()
+    public function getCpasOfferItemsWithCreatedBy()
     {
-       return $this->hasMany(EyufManual::class, [
+       return $this->hasMany(CpasOfferItem::class, [
             'created_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufManualsWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufManual
+     * Function  getCpasOfferItemsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasOfferItem
      */            
-    public function getEyufManualsWithModifiedByMany()
+    public function getCpasOfferItemsWithModifiedByMany()
     {
-       return $this->getMany(EyufManual::class, [
+       return $this->getMany(CpasOfferItem::class, [
             'modified_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufManualsWithModifiedBy
+     * Function  getCpasOfferItemsWithModifiedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufManualsWithModifiedBy()
+    public function getCpasOfferItemsWithModifiedBy()
     {
-       return $this->hasMany(EyufManual::class, [
+       return $this->hasMany(CpasOfferItem::class, [
             'modified_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufNeedsWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeed
+     * Function  getCpasPaysHistoriesWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasPaysHistory
      */            
-    public function getEyufNeedsWithDeletedByMany()
+    public function getCpasPaysHistoriesWithUserIdMany()
     {
-       return $this->getMany(EyufNeed::class, [
-            'deleted_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufNeedsWithDeletedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufNeedsWithDeletedBy()
-    {
-       return $this->hasMany(EyufNeed::class, [
-            'deleted_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufNeedsWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeed
-     */            
-    public function getEyufNeedsWithCreatedByMany()
-    {
-       return $this->getMany(EyufNeed::class, [
-            'created_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufNeedsWithCreatedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufNeedsWithCreatedBy()
-    {
-       return $this->hasMany(EyufNeed::class, [
-            'created_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufNeedsWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeed
-     */            
-    public function getEyufNeedsWithModifiedByMany()
-    {
-       return $this->getMany(EyufNeed::class, [
-            'modified_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufNeedsWithModifiedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufNeedsWithModifiedBy()
-    {
-       return $this->hasMany(EyufNeed::class, [
-            'modified_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufNeedCompatriotsWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeedCompatriot
-     */            
-    public function getEyufNeedCompatriotsWithDeletedByMany()
-    {
-       return $this->getMany(EyufNeedCompatriot::class, [
-            'deleted_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufNeedCompatriotsWithDeletedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufNeedCompatriotsWithDeletedBy()
-    {
-       return $this->hasMany(EyufNeedCompatriot::class, [
-            'deleted_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufNeedCompatriotsWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeedCompatriot
-     */            
-    public function getEyufNeedCompatriotsWithCreatedByMany()
-    {
-       return $this->getMany(EyufNeedCompatriot::class, [
-            'created_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufNeedCompatriotsWithCreatedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufNeedCompatriotsWithCreatedBy()
-    {
-       return $this->hasMany(EyufNeedCompatriot::class, [
-            'created_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufNeedCompatriotsWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeedCompatriot
-     */            
-    public function getEyufNeedCompatriotsWithModifiedByMany()
-    {
-       return $this->getMany(EyufNeedCompatriot::class, [
-            'modified_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufNeedCompatriotsWithModifiedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufNeedCompatriotsWithModifiedBy()
-    {
-       return $this->hasMany(EyufNeedCompatriot::class, [
-            'modified_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufNeedCountsWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeedCount
-     */            
-    public function getEyufNeedCountsWithDeletedByMany()
-    {
-       return $this->getMany(EyufNeedCount::class, [
-            'deleted_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufNeedCountsWithDeletedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufNeedCountsWithDeletedBy()
-    {
-       return $this->hasMany(EyufNeedCount::class, [
-            'deleted_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufNeedCountsWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeedCount
-     */            
-    public function getEyufNeedCountsWithCreatedByMany()
-    {
-       return $this->getMany(EyufNeedCount::class, [
-            'created_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufNeedCountsWithCreatedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufNeedCountsWithCreatedBy()
-    {
-       return $this->hasMany(EyufNeedCount::class, [
-            'created_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufNeedCountsWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeedCount
-     */            
-    public function getEyufNeedCountsWithModifiedByMany()
-    {
-       return $this->getMany(EyufNeedCount::class, [
-            'modified_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufNeedCountsWithModifiedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufNeedCountsWithModifiedBy()
-    {
-       return $this->hasMany(EyufNeedCount::class, [
-            'modified_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufReportsWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufReport
-     */            
-    public function getEyufReportsWithDeletedByMany()
-    {
-       return $this->getMany(EyufReport::class, [
-            'deleted_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufReportsWithDeletedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufReportsWithDeletedBy()
-    {
-       return $this->hasMany(EyufReport::class, [
-            'deleted_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufReportsWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufReport
-     */            
-    public function getEyufReportsWithCreatedByMany()
-    {
-       return $this->getMany(EyufReport::class, [
-            'created_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufReportsWithCreatedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufReportsWithCreatedBy()
-    {
-       return $this->hasMany(EyufReport::class, [
-            'created_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufReportsWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufReport
-     */            
-    public function getEyufReportsWithModifiedByMany()
-    {
-       return $this->getMany(EyufReport::class, [
-            'modified_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufReportsWithModifiedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufReportsWithModifiedBy()
-    {
-       return $this->hasMany(EyufReport::class, [
-            'modified_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufRequestsWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufRequest
-     */            
-    public function getEyufRequestsWithDeletedByMany()
-    {
-       return $this->getMany(EyufRequest::class, [
-            'deleted_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufRequestsWithDeletedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufRequestsWithDeletedBy()
-    {
-       return $this->hasMany(EyufRequest::class, [
-            'deleted_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufRequestsWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufRequest
-     */            
-    public function getEyufRequestsWithCreatedByMany()
-    {
-       return $this->getMany(EyufRequest::class, [
-            'created_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufRequestsWithCreatedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufRequestsWithCreatedBy()
-    {
-       return $this->hasMany(EyufRequest::class, [
-            'created_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufRequestsWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufRequest
-     */            
-    public function getEyufRequestsWithModifiedByMany()
-    {
-       return $this->getMany(EyufRequest::class, [
-            'modified_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufRequestsWithModifiedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufRequestsWithModifiedBy()
-    {
-       return $this->hasMany(EyufRequest::class, [
-            'modified_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufReviewsWithEmployerMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufReview
-     */            
-    public function getEyufReviewsWithEmployerMany()
-    {
-       return $this->getMany(EyufReview::class, [
-            'employer' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufReviewsWithEmployer
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufReviewsWithEmployer()
-    {
-       return $this->hasMany(EyufReview::class, [
-            'employer' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufReviewsWithScholarMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufReview
-     */            
-    public function getEyufReviewsWithScholarMany()
-    {
-       return $this->getMany(EyufReview::class, [
-            'scholar' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufReviewsWithScholar
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufReviewsWithScholar()
-    {
-       return $this->hasMany(EyufReview::class, [
-            'scholar' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufReviewsWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufReview
-     */            
-    public function getEyufReviewsWithDeletedByMany()
-    {
-       return $this->getMany(EyufReview::class, [
-            'deleted_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufReviewsWithDeletedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufReviewsWithDeletedBy()
-    {
-       return $this->hasMany(EyufReview::class, [
-            'deleted_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufReviewsWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufReview
-     */            
-    public function getEyufReviewsWithCreatedByMany()
-    {
-       return $this->getMany(EyufReview::class, [
-            'created_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufReviewsWithCreatedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufReviewsWithCreatedBy()
-    {
-       return $this->hasMany(EyufReview::class, [
-            'created_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufReviewsWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufReview
-     */            
-    public function getEyufReviewsWithModifiedByMany()
-    {
-       return $this->getMany(EyufReview::class, [
-            'modified_by' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufReviewsWithModifiedBy
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufReviewsWithModifiedBy()
-    {
-       return $this->hasMany(EyufReview::class, [
-            'modified_by' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufScholarsWithUserIdMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufScholar
-     */            
-    public function getEyufScholarsWithUserIdMany()
-    {
-       return $this->getMany(EyufScholar::class, [
+       return $this->getMany(CpasPaysHistory::class, [
             'user_id' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufScholarsWithUserId
+     * Function  getCpasPaysHistoriesWithUserId
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufScholarsWithUserId()
+    public function getCpasPaysHistoriesWithUserId()
     {
-       return $this->hasMany(EyufScholar::class, [
+       return $this->hasMany(CpasPaysHistory::class, [
             'user_id' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufScholarsWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufScholar
+     * Function  getCpasPaysHistoriesWithUserByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasPaysHistory
      */            
-    public function getEyufScholarsWithDeletedByMany()
+    public function getCpasPaysHistoriesWithUserByMany()
     {
-       return $this->getMany(EyufScholar::class, [
+       return $this->getMany(CpasPaysHistory::class, [
+            'userBy' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasPaysHistoriesWithUserBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasPaysHistoriesWithUserBy()
+    {
+       return $this->hasMany(CpasPaysHistory::class, [
+            'userBy' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasPaysHistoriesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasPaysHistory
+     */            
+    public function getCpasPaysHistoriesWithDeletedByMany()
+    {
+       return $this->getMany(CpasPaysHistory::class, [
             'deleted_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufScholarsWithDeletedBy
+     * Function  getCpasPaysHistoriesWithDeletedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufScholarsWithDeletedBy()
+    public function getCpasPaysHistoriesWithDeletedBy()
     {
-       return $this->hasMany(EyufScholar::class, [
+       return $this->hasMany(CpasPaysHistory::class, [
             'deleted_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufScholarsWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufScholar
+     * Function  getCpasPaysHistoriesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasPaysHistory
      */            
-    public function getEyufScholarsWithCreatedByMany()
+    public function getCpasPaysHistoriesWithCreatedByMany()
     {
-       return $this->getMany(EyufScholar::class, [
+       return $this->getMany(CpasPaysHistory::class, [
             'created_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufScholarsWithCreatedBy
+     * Function  getCpasPaysHistoriesWithCreatedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufScholarsWithCreatedBy()
+    public function getCpasPaysHistoriesWithCreatedBy()
     {
-       return $this->hasMany(EyufScholar::class, [
+       return $this->hasMany(CpasPaysHistory::class, [
             'created_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufScholarsWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufScholar
+     * Function  getCpasPaysHistoriesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasPaysHistory
      */            
-    public function getEyufScholarsWithModifiedByMany()
+    public function getCpasPaysHistoriesWithModifiedByMany()
     {
-       return $this->getMany(EyufScholar::class, [
+       return $this->getMany(CpasPaysHistory::class, [
             'modified_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufScholarsWithModifiedBy
+     * Function  getCpasPaysHistoriesWithModifiedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufScholarsWithModifiedBy()
+    public function getCpasPaysHistoriesWithModifiedBy()
     {
-       return $this->hasMany(EyufScholar::class, [
+       return $this->hasMany(CpasPaysHistory::class, [
             'modified_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufTablesWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufTable
+     * Function  getCpasSourcesWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasSource
      */            
-    public function getEyufTablesWithDeletedByMany()
+    public function getCpasSourcesWithDeletedByMany()
     {
-       return $this->getMany(EyufTable::class, [
+       return $this->getMany(CpasSource::class, [
             'deleted_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufTablesWithDeletedBy
+     * Function  getCpasSourcesWithDeletedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufTablesWithDeletedBy()
+    public function getCpasSourcesWithDeletedBy()
     {
-       return $this->hasMany(EyufTable::class, [
+       return $this->hasMany(CpasSource::class, [
             'deleted_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufTablesWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufTable
+     * Function  getCpasSourcesWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasSource
      */            
-    public function getEyufTablesWithCreatedByMany()
+    public function getCpasSourcesWithCreatedByMany()
     {
-       return $this->getMany(EyufTable::class, [
+       return $this->getMany(CpasSource::class, [
             'created_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufTablesWithCreatedBy
+     * Function  getCpasSourcesWithCreatedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufTablesWithCreatedBy()
+    public function getCpasSourcesWithCreatedBy()
     {
-       return $this->hasMany(EyufTable::class, [
+       return $this->hasMany(CpasSource::class, [
             'created_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufTablesWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufTable
+     * Function  getCpasSourcesWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasSource
      */            
-    public function getEyufTablesWithModifiedByMany()
+    public function getCpasSourcesWithModifiedByMany()
     {
-       return $this->getMany(EyufTable::class, [
+       return $this->getMany(CpasSource::class, [
             'modified_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufTablesWithModifiedBy
+     * Function  getCpasSourcesWithModifiedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufTablesWithModifiedBy()
+    public function getCpasSourcesWithModifiedBy()
     {
-       return $this->hasMany(EyufTable::class, [
+       return $this->hasMany(CpasSource::class, [
             'modified_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufTicketsWithDeletedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufTicket
+     * Function  getCpasStreamsWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasStream
      */            
-    public function getEyufTicketsWithDeletedByMany()
+    public function getCpasStreamsWithUserIdMany()
     {
-       return $this->getMany(EyufTicket::class, [
+       return $this->getMany(CpasStream::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasStreamsWithUserId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasStreamsWithUserId()
+    {
+       return $this->hasMany(CpasStream::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasStreamsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasStream
+     */            
+    public function getCpasStreamsWithDeletedByMany()
+    {
+       return $this->getMany(CpasStream::class, [
             'deleted_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufTicketsWithDeletedBy
+     * Function  getCpasStreamsWithDeletedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufTicketsWithDeletedBy()
+    public function getCpasStreamsWithDeletedBy()
     {
-       return $this->hasMany(EyufTicket::class, [
+       return $this->hasMany(CpasStream::class, [
             'deleted_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufTicketsWithCreatedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufTicket
+     * Function  getCpasStreamsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasStream
      */            
-    public function getEyufTicketsWithCreatedByMany()
+    public function getCpasStreamsWithCreatedByMany()
     {
-       return $this->getMany(EyufTicket::class, [
+       return $this->getMany(CpasStream::class, [
             'created_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufTicketsWithCreatedBy
+     * Function  getCpasStreamsWithCreatedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufTicketsWithCreatedBy()
+    public function getCpasStreamsWithCreatedBy()
     {
-       return $this->hasMany(EyufTicket::class, [
+       return $this->hasMany(CpasStream::class, [
             'created_by' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufTicketsWithModifiedByMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufTicket
+     * Function  getCpasStreamsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasStream
      */            
-    public function getEyufTicketsWithModifiedByMany()
+    public function getCpasStreamsWithModifiedByMany()
     {
-       return $this->getMany(EyufTicket::class, [
+       return $this->getMany(CpasStream::class, [
             'modified_by' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufTicketsWithModifiedBy
+     * Function  getCpasStreamsWithModifiedBy
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufTicketsWithModifiedBy()
+    public function getCpasStreamsWithModifiedBy()
     {
-       return $this->hasMany(EyufTicket::class, [
+       return $this->hasMany(CpasStream::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasStreamItemsWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasStreamItem
+     */            
+    public function getCpasStreamItemsWithUserIdMany()
+    {
+       return $this->getMany(CpasStreamItem::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasStreamItemsWithUserId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasStreamItemsWithUserId()
+    {
+       return $this->hasMany(CpasStreamItem::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasStreamItemsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasStreamItem
+     */            
+    public function getCpasStreamItemsWithDeletedByMany()
+    {
+       return $this->getMany(CpasStreamItem::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasStreamItemsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasStreamItemsWithDeletedBy()
+    {
+       return $this->hasMany(CpasStreamItem::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasStreamItemsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasStreamItem
+     */            
+    public function getCpasStreamItemsWithCreatedByMany()
+    {
+       return $this->getMany(CpasStreamItem::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasStreamItemsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasStreamItemsWithCreatedBy()
+    {
+       return $this->hasMany(CpasStreamItem::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasStreamItemsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasStreamItem
+     */            
+    public function getCpasStreamItemsWithModifiedByMany()
+    {
+       return $this->getMany(CpasStreamItem::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasStreamItemsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasStreamItemsWithModifiedBy()
+    {
+       return $this->hasMany(CpasStreamItem::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasTeasersWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasTeaser
+     */            
+    public function getCpasTeasersWithDeletedByMany()
+    {
+       return $this->getMany(CpasTeaser::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasTeasersWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasTeasersWithDeletedBy()
+    {
+       return $this->hasMany(CpasTeaser::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasTeasersWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasTeaser
+     */            
+    public function getCpasTeasersWithCreatedByMany()
+    {
+       return $this->getMany(CpasTeaser::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasTeasersWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasTeasersWithCreatedBy()
+    {
+       return $this->hasMany(CpasTeaser::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasTeasersWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasTeaser
+     */            
+    public function getCpasTeasersWithModifiedByMany()
+    {
+       return $this->getMany(CpasTeaser::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasTeasersWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasTeasersWithModifiedBy()
+    {
+       return $this->hasMany(CpasTeaser::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasTrackersWithUserIdMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasTracker
+     */            
+    public function getCpasTrackersWithUserIdMany()
+    {
+       return $this->getMany(CpasTracker::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasTrackersWithUserId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasTrackersWithUserId()
+    {
+       return $this->hasMany(CpasTracker::class, [
+            'user_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasTrackersWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasTracker
+     */            
+    public function getCpasTrackersWithDeletedByMany()
+    {
+       return $this->getMany(CpasTracker::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasTrackersWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasTrackersWithDeletedBy()
+    {
+       return $this->hasMany(CpasTracker::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasTrackersWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasTracker
+     */            
+    public function getCpasTrackersWithCreatedByMany()
+    {
+       return $this->getMany(CpasTracker::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasTrackersWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasTrackersWithCreatedBy()
+    {
+       return $this->hasMany(CpasTracker::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasTrackersWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasTracker
+     */            
+    public function getCpasTrackersWithModifiedByMany()
+    {
+       return $this->getMany(CpasTracker::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasTrackersWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasTrackersWithModifiedBy()
+    {
+       return $this->hasMany(CpasTracker::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getTreeShopsWithDeletedByMany
+     * @return  null|\yii\db\ActiveRecord[]|TreeShop
+     */            
+    public function getTreeShopsWithDeletedByMany()
+    {
+       return $this->getMany(TreeShop::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getTreeShopsWithDeletedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getTreeShopsWithDeletedBy()
+    {
+       return $this->hasMany(TreeShop::class, [
+            'deleted_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getTreeShopsWithCreatedByMany
+     * @return  null|\yii\db\ActiveRecord[]|TreeShop
+     */            
+    public function getTreeShopsWithCreatedByMany()
+    {
+       return $this->getMany(TreeShop::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getTreeShopsWithCreatedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getTreeShopsWithCreatedBy()
+    {
+       return $this->hasMany(TreeShop::class, [
+            'created_by' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getTreeShopsWithModifiedByMany
+     * @return  null|\yii\db\ActiveRecord[]|TreeShop
+     */            
+    public function getTreeShopsWithModifiedByMany()
+    {
+       return $this->getMany(TreeShop::class, [
+            'modified_by' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getTreeShopsWithModifiedBy
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getTreeShopsWithModifiedBy()
+    {
+       return $this->hasMany(TreeShop::class, [
             'modified_by' => 'id',
         ]);     
     }

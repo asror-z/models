@@ -47,6 +47,8 @@ use zetsoft\models\shop\ShopOrder;
 use zetsoft\system\actives\ZActiveQuery;
 use zetsoft\models\cpas\CpasTeaser;
 use zetsoft\models\cpas\CpasStreamItem;
+use zetsoft\models\cpas\CpasOffer;
+use zetsoft\models\cpas\CpasCompany;
 use zetsoft\widgets\incores\ZMCheckboxWidget;
 
 
@@ -63,8 +65,10 @@ use zetsoft\widgets\incores\ZMCheckboxWidget;
  * @property boolean $accept
  * @property boolean $active
  * @property int $cpas_stream_item_id
+ * @property int $cpas_offer_id
  * @property int $user_id
  * @property string $contact_name
+ * @property int $cpas_company_id
  * @property string $contact_phone
  * @property int $amount
  * @property int $shop_order_id
@@ -116,8 +120,10 @@ class CpasTracker extends ZActiveRecord
     public $accept;
     public $active;
     public $cpas_stream_item_id;
+    public $cpas_offer_id;
     public $user_id;
     public $contact_name;
+    public $cpas_company_id;
     public $contact_phone;
     public $amount;
     public $shop_order_id;
@@ -170,8 +176,10 @@ class CpasTracker extends ZActiveRecord
         'accept',
         'active',
         'cpas_stream_item_id',
+        'cpas_offer_id',
         'user_id',
         'contact_name',
+        'cpas_company_id',
         'contact_phone',
         'amount',
         'shop_order_id',
@@ -265,8 +273,10 @@ class CpasTracker extends ZActiveRecord
 			'accept',
 			'active',
 			'cpas_stream_item_id',
+			'cpas_offer_id',
 			'user_id',
 			'contact_name',
+			'cpas_company_id',
 			'contact_phone',
 			'amount',
 			'shop_order_id',
@@ -324,11 +334,17 @@ class CpasTracker extends ZActiveRecord
                     'CpasStreamItem' => [
                         'cpas_stream_item_id' => 'id',
                     ],
+                    'CpasOffer' => [
+                        'cpas_offer_id' => 'id',
+                    ],
                     'User' => [
                         'user_id' => 'id',
                         'deleted_by' => 'id',
                         'created_by' => 'id',
                         'modified_by' => 'id',
+                    ],
+                    'CpasCompany' => [
+                        'cpas_company_id' => 'id',
                     ],
                     'ShopOrder' => [
                         'shop_order_id' => 'id',
@@ -365,7 +381,7 @@ class CpasTracker extends ZActiveRecord
 
         return ZArrayHelper::merge(parent::column(), [
 
-            'cpas_stream_item_id' => function (FormDb $column) {
+            'cpas_stream_item_id' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->dbType = dbTypeInteger;
@@ -379,8 +395,17 @@ class CpasTracker extends ZActiveRecord
                 $column->fkAttr = 'title';
                 return $column;
             },
-            
-            'user_id' => function (FormDb $column) {
+
+            'cpas_offer_id' => static function (FormDb $column) {
+                $column->index = true;
+                $column->title = Az::l('Офферы');
+                $column->dbType = dbTypeInteger;
+                $column->widget = ZKSelect2Widget::class;
+                $column->fkAttr = 'title';
+                return $column;
+            },
+
+            'user_id' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->dbType = dbTypeInteger;
@@ -400,7 +425,7 @@ class CpasTracker extends ZActiveRecord
              * User Data
              */
 
-            'contact_name' => function (FormDb $column) {
+            'contact_name' => static function (FormDb $column) {
 
                 $column->title = Az::l('Контактное имя');
                 $column->rules = [
@@ -412,8 +437,14 @@ class CpasTracker extends ZActiveRecord
                 return $column;
             },
 
+            'cpas_company_id' => static function (FormDb $column) {
 
-            'contact_phone' => function (FormDb $column) {
+                $column->title = Az::l('Компания');
+
+                return $column;
+            },
+
+            'contact_phone' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->title = Az::l('Контактный номер');
@@ -428,7 +459,7 @@ class CpasTracker extends ZActiveRecord
             },
 
 
-            'amount' => function (FormDb $column) {
+            'amount' => static function (FormDb $column) {
 
                 $column->title = Az::l('Количество');
                 $column->dbType = dbTypeInteger;
@@ -442,17 +473,16 @@ class CpasTracker extends ZActiveRecord
              * Order Relation
              */
 
-            'shop_order_id' => function (FormDb $column) {
+            'shop_order_id' => static function (FormDb $column) {
 
                 $column->index = true;
-                $column->dbType = dbTypeInteger;
                 $column->title = Az::l('Заказ');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
-            'status' => function (FormDb $column) {
+            'status' => static function (FormDb $column) {
 
                 $column->title = Az::l('Статус');
                 $column->data = [
@@ -470,7 +500,7 @@ class CpasTracker extends ZActiveRecord
                         'ajax' => false
                     ]
                 ];
-                
+
 
                 //start|AlisherXayrillayev|2020-10-15
                 $column->ajax = false;
@@ -486,109 +516,109 @@ class CpasTracker extends ZActiveRecord
              * Tracker
              */
 
-            'referrer' => function (FormDb $column) {
+            'referrer' => static function (FormDb $column) {
 
                 $column->title = Az::l('От куда (Referrer)');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'country' => function (FormDb $column) {
+            'country' => static function (FormDb $column) {
 
                 $column->title = Az::l('Страна');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'city' => function (FormDb $column) {
+            'city' => static function (FormDb $column) {
 
                 $column->title = Az::l('Город');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'region' => function (FormDb $column) {
+            'region' => static function (FormDb $column) {
 
                 $column->title = Az::l('Регион');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'timezone' => function (FormDb $column) {
+            'timezone' => static function (FormDb $column) {
 
                 $column->title = Az::l('Часовой пояс');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'utc' => function (FormDb $column) {
+            'utc' => static function (FormDb $column) {
 
                 $column->title = Az::l('UTC');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'lat' => function (FormDb $column) {
+            'lat' => static function (FormDb $column) {
 
                 $column->title = Az::l('Широта');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'lon' => function (FormDb $column) {
+            'lon' => static function (FormDb $column) {
 
                 $column->title = Az::l('Долгота');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'ip' => function (FormDb $column) {
+            'ip' => static function (FormDb $column) {
 
                 $column->title = Az::l('IP адресс');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'device_model' => function (FormDb $column) {
+            'device_model' => static function (FormDb $column) {
 
                 $column->title = Az::l('Модель телефона');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'device_os' => function (FormDb $column) {
+            'device_os' => static function (FormDb $column) {
 
                 $column->title = Az::l('ОС');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'browser' => function (FormDb $column) {
+            'browser' => static function (FormDb $column) {
 
                 $column->title = Az::l('Браузер');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
@@ -599,7 +629,7 @@ class CpasTracker extends ZActiveRecord
              * Moneys
              */
 
-            'revenue' => function (FormDb $column) {
+            'revenue' => static function (FormDb $column) {
 
                 $column->title = Az::l('Доход');
                 $column->readonly = true;
@@ -608,7 +638,7 @@ class CpasTracker extends ZActiveRecord
                         validatorString,
                     ],
                 ];
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
@@ -619,60 +649,60 @@ class CpasTracker extends ZActiveRecord
              * Teaser
              */
 
-            'keyword' => function (FormDb $column) {
+            'keyword' => static function (FormDb $column) {
                 $column->title = Az::l('Ключевик');
                 return $column;
             },
 
 
-            'cost' => function (FormDb $column) {
+            'cost' => static function (FormDb $column) {
                 $column->title = Az::l('Расход');
                 return $column;
             },
 
 
-            'currency' => function (FormDb $column) {
+            'currency' => static function (FormDb $column) {
                 $column->title = Az::l('Валюта');
                 return $column;
             },
 
 
-            'external_id' => function (FormDb $column) {
+            'external_id' => static function (FormDb $column) {
                 $column->title = Az::l('External ID');
                 return $column;
             },
 
 
-            'creative_id' => function (FormDb $column) {
+            'creative_id' => static function (FormDb $column) {
                 $column->title = Az::l('Creative ID');
                 return $column;
             },
-            'ad_campaign_id' => function (FormDb $column) {
+            'ad_campaign_id' => static function (FormDb $column) {
                 $column->title = Az::l('Ad campaign ID');
                 return $column;
             },
 
-            'sub_id_1' => function (FormDb $column) {
+            'sub_id_1' => static function (FormDb $column) {
                 $column->title = Az::l('Sub ID 1');
                 return $column;
             },
-            'sub_id_2' => function (FormDb $column) {
+            'sub_id_2' => static function (FormDb $column) {
                 $column->title = Az::l('Sub ID 2');
                 return $column;
             },
-            'sub_id_3' => function (FormDb $column) {
+            'sub_id_3' => static function (FormDb $column) {
                 $column->title = Az::l('Sub ID 3');
                 return $column;
             },
-            'sub_id_4' => function (FormDb $column) {
+            'sub_id_4' => static function (FormDb $column) {
                 $column->title = Az::l('Sub ID 4');
                 return $column;
             },
-            'sub_id_5' => function (FormDb $column) {
+            'sub_id_5' => static function (FormDb $column) {
                 $column->title = Az::l('Sub ID 5');
                 return $column;
             },
-            'sub_id_6' => function (FormDb $column) {
+            'sub_id_6' => static function (FormDb $column) {
                 $column->title = Az::l('Sub ID 6');
                 return $column;
             },
@@ -699,8 +729,10 @@ class CpasTracker extends ZActiveRecord
         'accept',
         'active',
         'cpas_stream_item_id',
+        'cpas_offer_id',
         'user_id',
         'contact_name',
+        'cpas_company_id',
         'contact_phone',
         'amount',
         'shop_order_id',
@@ -764,7 +796,6 @@ class CpasTracker extends ZActiveRecord
                             [
                                 'name',
                                 'tizer_tracker_id',
-                                'source',
                                 'shop_order_id',
                                 'country',
                                 'city',
@@ -813,7 +844,7 @@ class CpasTracker extends ZActiveRecord
         $event = new Event();
 
         $event->beforeSave = function (CpasTracker $model) {
-                                     //vdd('sasasaas');
+            //vdd('sasasaas');
 
             //start|JakhongirKudratov|2020-10-12
 
@@ -898,6 +929,32 @@ class CpasTracker extends ZActiveRecord
     {
         return $this->hasOne(CpasStreamItem::class, [
           'id' => 'cpas_stream_item_id',
+      ]);    
+    }
+    
+    
+
+    /**
+     *
+     * Function  getCpasOffer
+     * @return bool|\yii\db\ActiveRecord|CpasOffer|null
+     */            
+    public function getCpasOfferOne()
+    {
+        return $this->getOne(CpasOffer::class, [
+          'id' => 'cpas_offer_id',
+      ]);    
+    }
+    
+     /**
+     *
+     * Function  getCpasOffer
+     * @return \yii\db\ActiveQuery | ZActiveQuery
+     */            
+    public function getCpasOffer()
+    {
+        return $this->hasOne(CpasOffer::class, [
+          'id' => 'cpas_offer_id',
       ]);    
     }
     
@@ -1002,6 +1059,32 @@ class CpasTracker extends ZActiveRecord
     {
         return $this->hasOne(User::class, [
           'id' => 'modified_by',
+      ]);    
+    }
+    
+    
+
+    /**
+     *
+     * Function  getCpasCompany
+     * @return bool|\yii\db\ActiveRecord|CpasCompany|null
+     */            
+    public function getCpasCompanyOne()
+    {
+        return $this->getOne(CpasCompany::class, [
+          'id' => 'cpas_company_id',
+      ]);    
+    }
+    
+     /**
+     *
+     * Function  getCpasCompany
+     * @return \yii\db\ActiveQuery | ZActiveQuery
+     */            
+    public function getCpasCompany()
+    {
+        return $this->hasOne(CpasCompany::class, [
+          'id' => 'cpas_company_id',
       ]);    
     }
     

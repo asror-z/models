@@ -50,7 +50,7 @@ use zetsoft\widgets\incores\ZMCheckboxWidget;
  * @property boolean $active
  * @property int $cpas_offer_id
  * @property int $place_country_id
- * @property int $pay
+ * @property double $pay
  * @property string $pay_currency
  * @property int $cost
  * @property string $cost_currency
@@ -190,6 +190,7 @@ class CpasOfferItem extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
+            $config->nameAuto = false;
             $config->hasOne = [
                     'CpasOffer' => [
                         'cpas_offer_id' => 'id',
@@ -230,7 +231,7 @@ class CpasOfferItem extends ZActiveRecord
 
         return ZArrayHelper::merge(parent::column(), [
 
-            'cpas_offer_id' => function (FormDb $column) {
+            'cpas_offer_id' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->title = Az::l('Оффер');
@@ -246,7 +247,7 @@ class CpasOfferItem extends ZActiveRecord
             },
 
 
-            'place_country_id' => function (FormDb $column) {
+            'place_country_id' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->title = Az::l('Страна');
@@ -267,13 +268,13 @@ class CpasOfferItem extends ZActiveRecord
             },
 
 
-            'pay' => function (FormDb $column) {
+            'pay' => static function (FormDb $column) {
 
                 $column->title = Az::l('Сумма выплаты');
-                $column->dbType = dbTypeInteger;
+                $column->dbType = dbTypeDouble;
                 $column->rules = [
                     [
-                        validatorInteger,
+                        validatorDouble,
                     ],
                 ];
                 $column->valueWidget = ZSuffixWidget::class;
@@ -293,7 +294,7 @@ class CpasOfferItem extends ZActiveRecord
             },
 
 
-            'pay_currency' => function (FormDb $column) {
+            'pay_currency' => static function (FormDb $column) {
 
                 $column->title = Az::l('Валюта выплаты');
                 $column->rules = [
@@ -312,7 +313,7 @@ class CpasOfferItem extends ZActiveRecord
             },
 
 
-            'cost' => function (FormDb $column) {
+            'cost' => static function (FormDb $column) {
 
                 $column->title = Az::l('Цена на лэндинге');
                 $column->dbType = dbTypeInteger;
@@ -327,7 +328,7 @@ class CpasOfferItem extends ZActiveRecord
             },
 
 
-            'cost_currency' => function (FormDb $column) {
+            'cost_currency' => static function (FormDb $column) {
 
                 $column->title = Az::l('Валюта на лэндинге');
                 $column->rules = [
@@ -346,7 +347,7 @@ class CpasOfferItem extends ZActiveRecord
             },
 
 
-            'aproove' => function (FormDb $column) {
+            'aproove' => static function (FormDb $column) {
 
                 $column->title = Az::l('Средний апрув');
                 $column->rules = [

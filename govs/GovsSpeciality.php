@@ -169,14 +169,6 @@ class GovsSpeciality extends ZActiveRecord
                         'modified_by' => 'id',
                     ],
                 ];
-            $config->hasMany = [
-                    'EyufCompatriot' => [
-                        'govs_speciality_ids' => 'id',
-                    ],
-                    'EyufTable' => [
-                        'govs_speciality_ids' => 'id',
-                    ],
-                ];
             $config->title = Az::l('Специальность');
 
             return $config;
@@ -470,54 +462,6 @@ class GovsSpeciality extends ZActiveRecord
     
     #region Many
 
-
-    /**
-     *
-     * Function  getEyufCompatriotsWithGovsSpecialityIdsMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufCompatriot
-     */            
-    public function getEyufCompatriotsWithGovsSpecialityIdsMany()
-    {
-       return $this->getMany(EyufCompatriot::class, [
-            'govs_speciality_ids' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufCompatriotsWithGovsSpecialityIds
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufCompatriotsWithGovsSpecialityIds()
-    {
-       return $this->hasMany(EyufCompatriot::class, [
-            'govs_speciality_ids' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufTablesWithGovsSpecialityIdsMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufTable
-     */            
-    public function getEyufTablesWithGovsSpecialityIdsMany()
-    {
-       return $this->getMany(EyufTable::class, [
-            'govs_speciality_ids' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufTablesWithGovsSpecialityIds
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufTablesWithGovsSpecialityIds()
-    {
-       return $this->hasMany(EyufTable::class, [
-            'govs_speciality_ids' => 'id',
-        ]);     
-    }
 
 
     #endregion

@@ -186,6 +186,7 @@ class CpasPaysHistory extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
+            $config->nameAuto = false;
             $config->hasOne = [
                     'User' => [
                         'user_id' => 'id',
@@ -222,7 +223,7 @@ class CpasPaysHistory extends ZActiveRecord
 
 
 
-            'user_id' => function (FormDb $column) {
+            'user_id' => static function (FormDb $column) {
                 $column->index = true;
                 $column->dbType = dbTypeInteger;
                 $column->title = Az::l('Пользователь');
@@ -232,7 +233,7 @@ class CpasPaysHistory extends ZActiveRecord
             },
             
 
-            'balance' => function (FormDb $column) {
+            'balance' => static function (FormDb $column) {
 
                 $column->dbType = dbTypeInteger;
                 $column->title = Az::l('Сумма');
@@ -242,7 +243,7 @@ class CpasPaysHistory extends ZActiveRecord
             },
 
 
-            'userBy' => function (FormDb $column) {
+            'userBy' => static function (FormDb $column) {
                 $column->index = true;
                 $column->dbType = dbTypeInteger;
                 $column->title = Az::l('Кому разрешено');
@@ -252,7 +253,7 @@ class CpasPaysHistory extends ZActiveRecord
 
                 return $column;
             },
-            'pays_payment_id' => function (FormDb $column) {
+            'pays_payment_id' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->dbType = dbTypeInteger;

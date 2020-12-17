@@ -208,7 +208,7 @@ class TestMirshod2 extends ZActiveRecord
             $config->addCode = true;
             $config->nameValue = 'Заказ клиента №{number} от {created_at}. Ф.И.О {contact_name}';
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $config->codeValue = function (TestMirshod2 $model) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $config->codeValue = function (TestMirshod2 $model) {
                 return Number::paddingLeft($model->number, 12);
             };
 

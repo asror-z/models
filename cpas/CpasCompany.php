@@ -40,6 +40,7 @@ use zetsoft\widgets\values\ZFormViewWidget;
 use zetsoft\models\cpas\CpasOffer;
 use zetsoft\widgets\inputes\ZHInputWidget;
 use zetsoft\widgets\incores\ZMCheckboxWidget;
+use zetsoft\models\cpas\CpasTracker;
 
 
 
@@ -184,6 +185,7 @@ class CpasCompany extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
+            $config->nameAuto = false;
             $config->hasOne = [
                     'User' => [
                         'deleted_by' => 'id',
@@ -193,6 +195,9 @@ class CpasCompany extends ZActiveRecord
                 ];
             $config->hasMany = [
                     'CpasOffer' => [
+                        'cpas_company_id' => 'id',
+                    ],
+                    'CpasTracker' => [
                         'cpas_company_id' => 'id',
                     ],
                 ];
@@ -220,7 +225,7 @@ class CpasCompany extends ZActiveRecord
 
 
 
-            'auth_code' => function (FormDb $column) {
+            'auth_code' => static function (FormDb $column) {
 
                 $column->title = Az::l('Код авторизации');
 
@@ -235,7 +240,7 @@ class CpasCompany extends ZActiveRecord
             },
 
 
-            'auth_type' => function (FormDb $column) {
+            'auth_type' => static function (FormDb $column) {
 
                 $column->title = Az::l('Тип авторизации');
 
@@ -249,7 +254,7 @@ class CpasCompany extends ZActiveRecord
                 return $column;
             },
 
-            'postback' => function (FormDb $column) {
+            'postback' => static function (FormDb $column) {
 
                 $column->title = Az::l('Постбэк для компании');
                 $column->dbType = dbTypeJsonb;
@@ -272,7 +277,7 @@ class CpasCompany extends ZActiveRecord
             },
 
 
-            'service' => function (FormDb $column) {
+            'service' => static function (FormDb $column) {
 
                 $column->title = Az::l('Сервис');
                 $column->dbType = dbTypeJsonb;
@@ -558,6 +563,30 @@ class CpasCompany extends ZActiveRecord
     public function getCpasOffersWithCpasCompanyId()
     {
        return $this->hasMany(CpasOffer::class, [
+            'cpas_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasTrackersWithCpasCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasTracker
+     */            
+    public function getCpasTrackersWithCpasCompanyIdMany()
+    {
+       return $this->getMany(CpasTracker::class, [
+            'cpas_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasTrackersWithCpasCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasTrackersWithCpasCompanyId()
+    {
+       return $this->hasMany(CpasTracker::class, [
             'cpas_company_id' => 'id',
         ]);     
     }

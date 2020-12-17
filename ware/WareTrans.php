@@ -198,7 +198,7 @@ class WareTrans extends ZActiveRecord
 
             $config->titleId = 'Номер';
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $config->nameValue = static function ($model) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $config->nameValue = static function ($model) {
 
                 Az::$app->forms->wiData->clean();
                 Az::$app->forms->wiData->model = $model;

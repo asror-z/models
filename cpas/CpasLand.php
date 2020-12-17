@@ -257,7 +257,7 @@ class CpasLand extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $config->nameAuto = true;                                                                                                      $config->nameValue = function (CpasLand $model) {
+                                                                                                                                                                        $config->nameValue = function (CpasLand $model) {
                 return PlaceCountry::findOne(CpasOfferItem::findOne($model->cpas_offer_item_id)->place_country_id)->name . '_' . $model->title . '_' . $model->created_at;
             };
 
@@ -309,7 +309,7 @@ class CpasLand extends ZActiveRecord
              * Core Data
              */
 
-            'cpas_offer_item_id' => function (FormDb $column) {
+            'cpas_offer_item_id' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->title = Az::l('Товар');
@@ -324,7 +324,7 @@ class CpasLand extends ZActiveRecord
                 return $column;
             },
 
-            'place_country_id' => function (FormDb $column) {
+            'place_country_id' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->readonly = true;
@@ -344,9 +344,23 @@ class CpasLand extends ZActiveRecord
                 return $column;
             },
 
+            'title' => static function (FormDb $column) {
 
+                $column->title = Az::l('Названия');
+                $column->rules = [
+                    [
+                        validatorString,
+                    ],
+                    [
+                        'zetsoft\\system\\validate\\ZRequiredValidator'
+                    ]
+                ];
+                $column->widget = ZInputWidget::class;
 
-            'type' => function (FormDb $column) {
+                return $column;
+            },
+
+            'type' => static function (FormDb $column) {
 
                 $column->title = Az::l('Тип');
                 $column->data = [
@@ -370,7 +384,7 @@ class CpasLand extends ZActiveRecord
              * Choose
              */
 
-            'status' => function (FormDb $column) {
+            'status' => static function (FormDb $column) {
 
                 $column->title = Az::l('Статус');
                 $column->data = [
@@ -391,7 +405,7 @@ class CpasLand extends ZActiveRecord
                 return $column;
             },
 
-            'adaptive' => function (FormDb $column) {
+            'adaptive' => static function (FormDb $column) {
 
                 $column->title = Az::l('Адаптивный');
                 $column->dbType = dbTypeBoolean;
@@ -407,7 +421,7 @@ class CpasLand extends ZActiveRecord
             },
 
 
-            'path' => function (FormDb $column) {
+            'path' => static function (FormDb $column) {
 
                 $column->title = Az::l('Путь к лендингу');
                 $column->dbType = dbTypeString;
@@ -418,7 +432,7 @@ class CpasLand extends ZActiveRecord
             },
 
 
-            'archive' => function (FormDb $column) {
+            'archive' => static function (FormDb $column) {
 
                 $column->title = Az::l('Архив продукта');
                 $column->dbType = dbTypeJsonb;
@@ -428,16 +442,16 @@ class CpasLand extends ZActiveRecord
                         'required' => true,
                     ]
                 ];
-                /*$column->rules = [
-                    [
-                        'zetsoft\\system\\validate\\ZRequiredValidator'
-                    ]
-                ];*/
+//                $column->rules = [
+//                    [
+//                        'zetsoft\\system\\validate\\ZRequiredValidator'
+//                    ]
+//                ];
                 return $column;
             },
 
 
-            'screen' => function (FormDb $column) {
+            'screen' => static function (FormDb $column) {
 
                 $column->title = Az::l('Скриншот лендинга');
                 $column->dbType = dbTypeJsonb;
@@ -463,7 +477,7 @@ class CpasLand extends ZActiveRecord
              */
 
 
-            'visit' => function (FormDb $column) {
+            'visit' => static function (FormDb $column) {
 
                 $column->title = Az::l('Посетители');
                 $column->dbType = dbTypeInteger;
@@ -479,7 +493,7 @@ class CpasLand extends ZActiveRecord
                 return $column;
             },
 
-            'order' => function (FormDb $column) {
+            'order' => static function (FormDb $column) {
 
                 $column->title = Az::l('Заказ');
 
@@ -497,7 +511,7 @@ class CpasLand extends ZActiveRecord
             },
 
 
-            'cr' => function (FormDb $column) {
+            'cr' => static function (FormDb $column) {
 
                 $column->title = Az::l('СР');
                 $column->dbType = dbTypeInteger;

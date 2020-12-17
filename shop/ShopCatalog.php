@@ -226,7 +226,7 @@ class ShopCatalog extends ZActiveRecord
 
             $config->addGuid = true;
             $config->guidAuto = true;
-                                                                                                                        $config->nameValue = function ($model) {
+                                                                                                                                    $config->nameValue = function ($model) {
 
                 /** @var ShopCatalog $model */
                 $company = UserCompany::findOne($model->user_company_id);
@@ -242,11 +242,11 @@ class ShopCatalog extends ZActiveRecord
 
             };
 
-                                                                                                                        $config->guidValue = function ($model) {
+                                                                                                                                    $config->guidValue = function ($model) {
                 return Az::$app->cores->guid->create();
             };
 
-                                                                                                                        $config->query = function ($model) {
+                                                                                                                                    $config->query = function ($model) {
 
                 if ($this->hasRole('seller'))
                     return static::find()

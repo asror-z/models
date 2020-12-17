@@ -39,6 +39,7 @@ use zetsoft\system\actives\ZModel;
 use zetsoft\widgets\values\ZFormViewWidget;
 use zetsoft\models\cpas\CpasCompany;
 use zetsoft\widgets\inputes\ZHInputWidget;
+use zetsoft\models\cpas\CpasTracker;
 use zetsoft\widgets\incores\ZMCheckboxWidget;
 
 
@@ -58,7 +59,7 @@ use zetsoft\widgets\incores\ZMCheckboxWidget;
  * @property string $company
  * @property string $text
  * @property string $substance
- * @property int $catalog
+ * @property string $catalog
  * @property int $source
  * @property string $composition
  * @property int $deliver
@@ -181,9 +182,6 @@ class CpasOffer extends ZActiveRecord
     public $_status;  
     public const status = [
         'new' => 'new',
-        'not_accepted' => 'not_accepted',
-        'blocked' => 'blocked',
-        'active' => 'active',
     ];
 
     #endregion
@@ -201,9 +199,6 @@ class CpasOffer extends ZActiveRecord
 
         $this->_status = [
             'new' => Az::l('Новый'),
-            'not_accepted' => Az::l('не одобрено'),
-            'blocked' => Az::l('блокированный'),
-            'active' => Az::l('активный'),
         ];
         
 
@@ -295,6 +290,9 @@ class CpasOffer extends ZActiveRecord
                     'CpasStream' => [
                         'cpas_offer_id' => 'id',
                     ],
+                    'CpasTracker' => [
+                        'cpas_offer_id' => 'id',
+                    ],
                 ];
             $config->name = 'title';
 
@@ -320,10 +318,26 @@ class CpasOffer extends ZActiveRecord
 
         return ZArrayHelper::merge(parent::column(), [
 
+            'title' => static function (FormDb $column) {
 
+                $column->title = Az::l('Названия');
+                $column->rules = [
+                    [
+                        validatorString,
+                    ],
+                    [
+                        'zetsoft\\system\\validate\\ZRequiredValidator'
+                    ],
+                    [
+                        validatorUnique
+                    ]
+                ];
+                $column->widget = ZInputWidget::class;
 
+                return $column;
+            },
 
-            'desc' => function (FormDb $column) {
+            'desc' => static function (FormDb $column) {
 
                 $column->title = Az::l('Описания товара');
 
@@ -335,13 +349,13 @@ class CpasOffer extends ZActiveRecord
                         'zetsoft\\system\\validate\\ZRequiredValidator',
                     ],
                 ];
-
+                $column->dbType = dbTypeText;
                 $column->widget = ZTextAreaWidget::class;
 
                 return $column;
             },
 
-            'company' => function (FormDb $column) {
+            'company' => static function (FormDb $column) {
 
                 $column->title = Az::l('Производитель');
 
@@ -357,7 +371,7 @@ class CpasOffer extends ZActiveRecord
             },
 
 
-            'text' => function (FormDb $column) {
+            'text' => static function (FormDb $column) {
 
                 $column->title = Az::l('Описания оффера');
                 $column->dbType = dbTypeText;
@@ -372,7 +386,7 @@ class CpasOffer extends ZActiveRecord
             },
 
 
-            'substance' => function (FormDb $column) {
+            'substance' => static function (FormDb $column) {
 
                 $column->title = Az::l('Форм фактор');
                 $column->rules = [
@@ -383,21 +397,17 @@ class CpasOffer extends ZActiveRecord
                         'zetsoft\\system\\validate\\ZRequiredValidator',
                     ],
                 ];
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'catalog' => function (FormDb $column) {
+            'catalog' => static function (FormDb $column) {
                 $column->index = true;
                 $column->showform = true;
-                $column->title = Az::l('Каталог');
-                $column->dbType = dbTypeInteger;
+                $column->title = Az::l('Ид товара');
                 $column->rules = [
-                    [
-                        validatorInteger,
-                    ],
                     [
                         'zetsoft\\system\\validate\\ZRequiredValidator'
                     ]
@@ -407,7 +417,7 @@ class CpasOffer extends ZActiveRecord
             },
 
 
-            'source' => function (FormDb $column) {
+            'source' => static function (FormDb $column) {
                 $column->index = true;
                 $column->title = Az::l('Источник');
                 $column->dbType = dbTypeInteger;
@@ -415,7 +425,7 @@ class CpasOffer extends ZActiveRecord
             },
 
 
-            'composition' => function (FormDb $column) {
+            'composition' => static function (FormDb $column) {
 
                 $column->title = Az::l('Состав');
                 $column->dbType = dbTypeText;
@@ -431,7 +441,7 @@ class CpasOffer extends ZActiveRecord
             },
 
 
-            'deliver' => function (FormDb $column) {
+            'deliver' => static function (FormDb $column) {
 
                 $column->title = Az::l('Доставки');
                 $column->dbType = dbTypeJsonb;
@@ -441,14 +451,18 @@ class CpasOffer extends ZActiveRecord
                         'zetsoft\\system\\validate\\ZRequiredValidator'
                     ]
                 ];
-                $column->multiple = true;
+                $column->options = [
+                    'config' => [
+                        'multiple' => true,
+                    ],
+                ];
                 $column->fkTable = 'place_country';
 
                 return $column;
             },
 
 
-            'photo' => function (FormDb $column) {
+            'photo' => static function (FormDb $column) {
 
                 $column->title = Az::l('Фото продукта');
                 $column->dbType = dbTypeJsonb;
@@ -457,7 +471,7 @@ class CpasOffer extends ZActiveRecord
                 return $column;
             },
 
-            'photos' => function (FormDb $column) {
+            'photos' => static function (FormDb $column) {
 
                 $column->title = Az::l('Картинки продукта');
                 $column->dbType = dbTypeJsonb;
@@ -466,7 +480,7 @@ class CpasOffer extends ZActiveRecord
             },
 
 
-            'promo' => function (FormDb $column) {
+            'promo' => static function (FormDb $column) {
 
                 $column->title = Az::l('Прома продукта');
                 $column->dbType = dbTypeJsonb;
@@ -476,7 +490,7 @@ class CpasOffer extends ZActiveRecord
             },
 
 
-            'call_center' => function (FormDb $column) {
+            'call_center' => static function (FormDb $column) {
 
                 $column->title = Az::l('Call Центр');
                 $column->dbType = dbTypeJsonb;
@@ -486,14 +500,18 @@ class CpasOffer extends ZActiveRecord
                         'zetsoft\\system\\validate\\ZRequiredValidator'
                     ]
                 ];
-                $column->multiple = true;
+                $column->options = [
+                    'config' => [
+                        'multiple' => true,
+                    ],
+                ];
                 $column->fkTable = 'place_country';
 
                 return $column;
             },
 
 
-            'cpas_company_id' => function (FormDb $column) {
+            'cpas_company_id' => static function (FormDb $column) {
 
                 $column->title = Az::l('Компании партнеры');
                 $column->dbType = dbTypeInteger;
@@ -511,31 +529,39 @@ class CpasOffer extends ZActiveRecord
             },
 
 
-            'recommended_trafic' => function (FormDb $column) {
+            'recommended_trafic' => static function (FormDb $column) {
 
                 $column->title = Az::l('Источники траффика рекомендуемый');
                 $column->dbType = dbTypeJsonb;
                 $column->widget = ZKSelect2Widget::class;
-                $column->multiple = true;
+                $column->options = [
+                    'config' => [
+                        'multiple' => true,
+                    ],
+                ];
                 $column->fkTable = 'cpas_source';
 
                 return $column;
             },
 
 
-            'not_recommended_traffic' => function (FormDb $column) {
+            'not_recommended_traffic' => static function (FormDb $column) {
 
                 $column->title = Az::l('Источники траффика не рекомендуемый');
                 $column->dbType = dbTypeJsonb;
                 $column->widget = ZKSelect2Widget::class;
-                $column->multiple = true;
+                $column->options = [
+                    'config' => [
+                        'multiple' => true,
+                    ],
+                ];
                 $column->fkTable = 'cpas_source';
 
                 return $column;
             },
 
 
-            'work_time_start' => function (FormDb $column) {
+            'work_time_start' => static function (FormDb $column) {
 
                 $column->title = Az::l('КЦ начало рабочего времени');
 
@@ -544,16 +570,16 @@ class CpasOffer extends ZActiveRecord
             },
 
 
-            'work_time_end' => function (FormDb $column) {
+            'work_time_end' => static function (FormDb $column) {
 
                 $column->title = Az::l('КЦ конец рабочего времени');
-                $column->widget = ZKTimePickerWidget::class;
+//                $column->widget = ZKTimePickerWidget::class;
 
                 return $column;
             },
 
 
-            'api' => function (FormDb $column) {
+            'api' => static function (FormDb $column) {
 
                 $column->title = Az::l('По API');
                 $column->dbType = dbTypeBoolean;
@@ -563,7 +589,7 @@ class CpasOffer extends ZActiveRecord
             },
 
 
-            'audience' => function (FormDb $column) {
+            'audience' => static function (FormDb $column) {
 
                 $column->title = Az::l('Аудитория');
                 $column->rules = [
@@ -576,7 +602,7 @@ class CpasOffer extends ZActiveRecord
             },
 
 
-            'limit' => function (FormDb $column) {
+            'limit' => static function (FormDb $column) {
 
                 $column->title = Az::l('Лимит лидов');
                 $column->dbType = dbTypeInteger;
@@ -590,15 +616,15 @@ class CpasOffer extends ZActiveRecord
             },
 
 
-            'status' => function (FormDb $column) {
+            'status' => static function (FormDb $column) {
 
                 $column->title = Az::l('Статус');
 
                 $column->data = [
                     'new' => Az::l('Новый'),
-                    'not_accepted' => Az::l('не одобрено'),
-                    'blocked' => Az::l('блокированный'),
-                    'active' => Az::l('активный'),
+//                    'not_accepted' => Az::l('не одобрено'),
+//                    'blocked' => Az::l('блокированный'),
+//                    'active' => Az::l('активный'),
                 ];
 
                 $column->rules = [
@@ -1071,6 +1097,30 @@ class CpasOffer extends ZActiveRecord
     public function getCpasStreamsWithCpasOfferId()
     {
        return $this->hasMany(CpasStream::class, [
+            'cpas_offer_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasTrackersWithCpasOfferIdMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasTracker
+     */            
+    public function getCpasTrackersWithCpasOfferIdMany()
+    {
+       return $this->getMany(CpasTracker::class, [
+            'cpas_offer_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasTrackersWithCpasOfferId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasTrackersWithCpasOfferId()
+    {
+       return $this->hasMany(CpasTracker::class, [
             'cpas_offer_id' => 'id',
         ]);     
     }

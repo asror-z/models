@@ -154,6 +154,7 @@ class CpasSource extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
+            $config->nameAuto = false;
             $config->hasOne = [
                     'User' => [
                         'deleted_by' => 'id',

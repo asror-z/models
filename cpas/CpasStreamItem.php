@@ -353,14 +353,14 @@ class CpasStreamItem extends ZActiveRecord
              * Landings
              */
 
-            'cpas_land_id' => function (FormDb $column) {
+            'cpas_land_id' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->title = Az::l('Лендинг');
-               /* $column->widget = ZKSelect2Widget::class;
-                $column->fkQuery = [
-                    'type' => 'land'
-                ];*/
+                /* $column->widget = ZKSelect2Widget::class;
+                 $column->fkQuery = [
+                     'type' => 'land'
+                 ];*/
                 $column->widget = ZDepdropWidget::class;
                 $column->options = [
                     'config' => [
@@ -376,7 +376,7 @@ class CpasStreamItem extends ZActiveRecord
             },
 
 
-            'cpas_trans' => function (FormDb $column) {
+            'cpas_trans' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->title = Az::l('Прелендинг');
@@ -401,7 +401,7 @@ class CpasStreamItem extends ZActiveRecord
                 return $column;
             },
 
-            'cpas_trans_form' => function (FormDb $column) {
+            'cpas_trans_form' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->title = Az::l('Прелендинг с формой');
@@ -432,7 +432,7 @@ class CpasStreamItem extends ZActiveRecord
              * Auto Fill
              */
 
-            'cpas_stream_id' => function (FormDb $column) {
+            'cpas_stream_id' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->readonly = true;
@@ -443,7 +443,7 @@ class CpasStreamItem extends ZActiveRecord
             },
 
 
-            'user_id' => function (FormDb $column) {
+            'user_id' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->readonly = true;
@@ -454,10 +454,10 @@ class CpasStreamItem extends ZActiveRecord
                 $column->autoValue = function () {
                     return null;
                 };*/
-               /* $column->auto = false;
-                $column->autoValue = function () {
-                    return $this->getCpasStreamOne()->user_id;
-                };*/
+                /* $column->auto = false;
+                 $column->autoValue = function () {
+                     return $this->getCpasStreamOne()->user_id;
+                 };*/
 
                 return $column;
             },
@@ -468,20 +468,31 @@ class CpasStreamItem extends ZActiveRecord
              * Main Data
              */
 
+            'title' => static function (FormDb $column) {
 
+                $column->title = Az::l('Название');
+                $column->widget = ZInputWidget::class;
+                $column->rules = [
+                    [
+                        'zetsoft\\system\\validate\\ZRequiredValidator'
+                    ]
+                ];
 
-
-            'link' => function (FormDb $column) {
-
-                $column->title = Az::l('Ссылка лендинга');
-                $column->widget = ZHInputWidget::class;
                 return $column;
             },
-            
-            'trans_link' => function (FormDb $column) {
+
+
+            'link' => static function (FormDb $column) {
+
+                $column->title = Az::l('Ссылка лендинга');
+                $column->widget = ZInputWidget::class;
+                return $column;
+            },
+
+            'trans_link' => static function (FormDb $column) {
 
                 $column->title = Az::l('Ссылка для прелендинга');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
                 $column->rules = [
                     [
                         TransLinkValidator::class
@@ -491,15 +502,15 @@ class CpasStreamItem extends ZActiveRecord
             },
 
 
-            'track' => function (FormDb $column) {
+            'track' => static function (FormDb $column) {
 
                 $column->title = Az::l('Трекинг ссылка');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
-            'teaser' => function (FormDb $column) {
+            'teaser' => static function (FormDb $column) {
 
                 $column->title = Az::l('Ссылка для тизерных сетей');
                 $column->dbType = dbTypeJsonb;
@@ -545,7 +556,7 @@ class CpasStreamItem extends ZActiveRecord
              * Stats Data
              */
 
-            'click' => function (FormDb $column) {
+            'click' => static function (FormDb $column) {
 
                 $column->title = Az::l('Клики');
                 $column->readonly = true;
@@ -555,7 +566,7 @@ class CpasStreamItem extends ZActiveRecord
                 return $column;
             },
 
-            'uniclick' => function (FormDb $column) {
+            'uniclick' => static function (FormDb $column) {
 
                 $column->title = Az::l('Уникальные клики');
                 $column->readonly = true;
@@ -564,7 +575,7 @@ class CpasStreamItem extends ZActiveRecord
                 return $column;
             },
 
-            'lead' => function (FormDb $column) {
+            'lead' => static function (FormDb $column) {
 
                 $column->title = Az::l('Лиды');
                 $column->readonly = true;
@@ -579,7 +590,7 @@ class CpasStreamItem extends ZActiveRecord
              * Statuses
              */
 
-            'accept' => function (FormDb $column) {
+            'accept' => static function (FormDb $column) {
 
                 $column->title = Az::l('Одобрен');
                 $column->readonly = true;
@@ -588,7 +599,7 @@ class CpasStreamItem extends ZActiveRecord
                 return $column;
             },
 
-            'cancel' => function (FormDb $column) {
+            'cancel' => static function (FormDb $column) {
 
                 $column->title = Az::l('Отменен');
                 $column->readonly = true;
@@ -597,7 +608,7 @@ class CpasStreamItem extends ZActiveRecord
                 return $column;
             },
 
-            'trash' => function (FormDb $column) {
+            'trash' => static function (FormDb $column) {
 
                 $column->title = Az::l('Треш');
                 $column->readonly = true;
@@ -612,27 +623,27 @@ class CpasStreamItem extends ZActiveRecord
              * Conversion
              */
 
-            'EPC' => function (FormDb $column) {
+            'EPC' => static function (FormDb $column) {
 
                 $column->title = Az::l('EPC');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
-            'CPC' => function (FormDb $column) {
+            'CPC' => static function (FormDb $column) {
 
                 $column->title = Az::l('CPC');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'CR' => function (FormDb $column) {
+            'CR' => static function (FormDb $column) {
 
                 $column->title = Az::l('CR');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
@@ -643,7 +654,7 @@ class CpasStreamItem extends ZActiveRecord
              * Money
              */
 
-            'revenue' => function (FormDb $column) {
+            'revenue' => static function (FormDb $column) {
 
                 $column->title = Az::l('Доход');
                 $column->readonly = true;
@@ -652,13 +663,13 @@ class CpasStreamItem extends ZActiveRecord
                         validatorString,
                     ],
                 ];
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'expense' => function (FormDb $column) {
+            'expense' => static function (FormDb $column) {
 
                 $column->title = Az::l('Расходы');
                 $column->readonly = true;
@@ -667,12 +678,12 @@ class CpasStreamItem extends ZActiveRecord
                         validatorString,
                     ],
                 ];
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
-            'profit' => function (FormDb $column) {
+            'profit' => static function (FormDb $column) {
 
                 $column->title = Az::l('Прибыль');
                 $column->readonly = true;
@@ -681,13 +692,13 @@ class CpasStreamItem extends ZActiveRecord
                         validatorString,
                     ],
                 ];
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'ROI' => function (FormDb $column) {
+            'ROI' => static function (FormDb $column) {
 
                 $column->title = Az::l('Возврат инвестиций');
                 $column->readonly = true;
@@ -696,7 +707,7 @@ class CpasStreamItem extends ZActiveRecord
                         validatorString,
                     ],
                 ];
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
@@ -839,9 +850,9 @@ class CpasStreamItem extends ZActiveRecord
         $event = new Event();
         $event->afterSave = function (CpasStreamItem $model) {
 
-               
-                   Az::$app->cpas->cpa->createCpasSite($model);
-                   $model->track = $this->urlGetBase() . '/cpas/track/track.aspx?cpas_stream_item_id=' . $model->id;
+            if (!$this->paramGet($this->paramIsUpdate))
+                Az::$app->cpas->cpa->createCpasSite($model);
+            $model->track = $this->urlGetBase() . '/cpas/track/track.aspx?cpas_stream_item_id=' . $model->id;
 
         };
         /*

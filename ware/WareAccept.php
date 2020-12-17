@@ -312,7 +312,7 @@ class WareAccept extends ZActiveRecord
 
             $config->titleId = 'Номер';
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $config->nameValue = function ($model) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $config->nameValue = function ($model) {
 
                 Az::$app->forms->wiData->clean();
                 Az::$app->forms->wiData->model = $model;

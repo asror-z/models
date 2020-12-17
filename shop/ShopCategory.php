@@ -187,7 +187,7 @@ class ShopCategory extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
-                                                                                                                        $config->query = function ($model) {
+                                                                                                                                    $config->query = function ($model) {
                 if ($this->hasRole('seller'))
                     return static::find()
                         ->where([

@@ -9,32 +9,37 @@
  *
  */
 
-namespace zetsoft\models\lang;
+namespace zetsoft\models\dyna;
 
 
+use zetsoft\dbitem\core\SessionItem;
+use zetsoft\dbitem\data\ALLApp;
+use zetsoft\dbitem\data\Config;
 use zetsoft\dbitem\data\ConfigDB;
 use zetsoft\dbitem\data\Event;
+use zetsoft\dbitem\data\Form;
 use zetsoft\dbitem\data\FormDb;
 use zetsoft\system\actives\ZActiveRecord;
 use zetsoft\system\Az;
 use zetsoft\system\helpers\ZArrayHelper;
-use zetsoft\widgets\inputes\ZKSelect2Widget;
-use zetsoft\models\user\User;
-use zetsoft\dbitem\data\Config;
-use zetsoft\system\actives\ZModel;
-use zetsoft\widgets\inputes\ZKDatepickerWidget;
-use zetsoft\dbitem\data\Form;
-use zetsoft\system\actives\ZActiveQuery;
+use zetsoft\system\kernels\ZView;
+use zetsoft\widgets\former\ZFormWidget;
+use zetsoft\widgets\inputes\ZFileInputWidget;
 use zetsoft\widgets\inputes\ZHInputWidget;
+use zetsoft\widgets\inputes\ZKDatepickerWidget;
+use zetsoft\widgets\inputes\ZKSelect2Widget;
 use zetsoft\widgets\inputes\ZKSwitchInputWidget;
+use zetsoft\system\actives\ZModel;
+use zetsoft\models\dyna\DynaConfig;
+use zetsoft\models\user\User;
+use zetsoft\system\actives\ZActiveQuery;
 use zetsoft\widgets\incores\ZMCheckboxWidget;
 
 
-
 /**
- * Class    LangNationality
+ * Class    DynaImport
  * @package zetsoft\models\App
- * 
+ *
  * @property int $id
  * @property int $sort
  * @property string $name
@@ -42,7 +47,8 @@ use zetsoft\widgets\incores\ZMCheckboxWidget;
  * @property boolean $tranz
  * @property boolean $accept
  * @property boolean $active
- * @property string $lang
+ * @property string $modelClass
+ * @property array $excel
  * @property string $deleted_at
  * @property int $deleted_by
  * @property string $deleted_text
@@ -51,7 +57,7 @@ use zetsoft\widgets\incores\ZMCheckboxWidget;
  * @property int $created_by
  * @property int $modified_by
  */
-class LangNationality extends ZActiveRecord
+class DynaImport extends ZActiveRecord
 {
     #region MVars
 
@@ -64,7 +70,8 @@ class LangNationality extends ZActiveRecord
     public $tranz;
     public $accept;
     public $active;
-    public $lang;
+    public $modelClass;
+    public $excel;
     public $deleted_at;
     public $deleted_by;
     public $deleted_text;
@@ -87,7 +94,8 @@ class LangNationality extends ZActiveRecord
         'tranz',
         'accept',
         'active',
-        'lang',
+        'modelClass',
+        'excel',
         'deleted_at',
         'deleted_by',
         'deleted_text',
@@ -110,8 +118,8 @@ class LangNationality extends ZActiveRecord
     ##region Init
 
     public static ?string $dbase = 'db';
-    public static ?string $title = Azl . 'Национальность';
-    public static ?string $icon = '';
+    public static ?string $title = Azl . 'Конфигурации универсального фильтра';
+    public static ?string $icon = 'fal fa-list-alt';
     public static ?bool $menu = true;
 
     public function init()
@@ -124,33 +132,34 @@ class LangNationality extends ZActiveRecord
     #endregion
 
     #region Fields
-    
-   public function fields()
-   {
-       return [
-			'id',
-			'sort',
-			'name',
-			'title',
-			'tranz',
-			'accept',
-			'active',
-			'lang',
-			'deleted_at',
-			'deleted_by',
-			'deleted_text',
-			'created_at',
-			'modified_at',
-			'created_by',
-			'modified_by',
 
-       ];
-   }
+    public function fields()
+    {
+        return [
+            'id',
+            'sort',
+            'name',
+            'title',
+            'tranz',
+            'accept',
+            'active',
+            'modelClass',
+            'excel',
+            'deleted_at',
+            'deleted_by',
+            'deleted_text',
+            'created_at',
+            'modified_at',
+            'created_by',
+            'modified_by',
+
+        ];
+    }
 
     #endregion
 
     #region Config
-    
+
     /**
      * Function  config
      * @return  \Closure
@@ -159,15 +168,17 @@ class LangNationality extends ZActiveRecord
     public function config()
     {
         return function (ConfigDB $config) {
-
+            $config->nameShowForm = false;
             $config->hasOne = [
-                    'User' => [
-                        'deleted_by' => 'id',
-                        'created_by' => 'id',
-                        'modified_by' => 'id',
-                    ],
-                ];
-            $config->title = Az::l('Национальность');
+                'User' => [
+                    'deleted_by' => 'id',
+                    'created_by' => 'id',
+                    'modified_by' => 'id',
+                ],
+            ];
+            $config->icon = 'fal fa-list-alt';
+
+            $config->title = Az::l('Конфигурации универсального фильтра');
 
             return $config;
         };
@@ -188,18 +199,29 @@ class LangNationality extends ZActiveRecord
             return $this->configs->column;
 
         return ZArrayHelper::merge(parent::column(), [
-           
-            'lang' => function (FormDb $column) {
 
-                $column->title = Az::l('Язык');
-                $column->tooltip = Az::l('Язык интерфейса для национальности');
-                $column->data = LangData::class;
-                $column->widget = ZKSelect2Widget::class;
+            'modelClass' => function (FormDb $column) {
+
+                $column->index = true;
+                $column->title = Az::l('DynaConfig');
 
                 return $column;
             },
-            
 
+            'excel' => function (FormDb $column) {
+
+                $column->title = Az::l('Excel');
+                $column->tooltip = Az::l('Excel');
+                $column->dbType = dbTypeJsonb;
+                $column->widget = ZFileInputWidget::class;
+//                $column->valueWidget = ZDownloadWidget::class;
+                $column->format = 'raw';
+                $column->width = '250px';
+                $column->mergeHeader = true;
+                $column->edit = false;
+
+                return $column;
+            },
         ], $this->configs->replace);
     }
 
@@ -220,7 +242,8 @@ class LangNationality extends ZActiveRecord
         'tranz',
         'accept',
         'active',
-        'lang',
+        'modelClass',
+        'excel',
         'deleted_at',
         'deleted_by',
         'deleted_text',
@@ -254,9 +277,11 @@ class LangNationality extends ZActiveRecord
                         'items' => [
                             [
                                 'name',
-                            ],
-                            [
-                                'lang',
+                                'dynaId',
+                                'attr',
+                                'operator',
+                                'value',
+                                'active',
                             ],
                         ],
                     ],
@@ -268,7 +293,7 @@ class LangNationality extends ZActiveRecord
     #endregion
 
     #region Value
-    public function value(LangNationality &$model = null)
+    function value(DynaMulti &$model = null)
     {
         if ($model === null)
             $model = $this;
@@ -287,43 +312,46 @@ class LangNationality extends ZActiveRecord
      * Function column
      * @return ZEvent
      */
-    public function event()
+    function event()
     {
 
         $event = new Event();
-    /*
-        $event->beforeDelete = function (LangNationality $model) {
-            return null;
-        };
 
-        $event->afterDelete = function (LangNationality $model) {
-            return null;
+        $event->afterSave = function (DynaImport $model) {
+//            if (!$this->emptyOrNullable($model->excel))
+//                Az::$app->forms->import->import($model);
         };
+        /*
+            $event->beforeDelete = function (DynaMulti $model) {
+                return null;
+            };
 
-        $event->beforeSave = function (LangNationality $model) {
-            return null;
-        };
+            $event->afterDelete = function (DynaMulti $model) {
+                return null;
+            };
 
-        $event->afterSave = function (LangNationality $model) {
-            return null;
-        };
+            $event->beforeSave = function (DynaMulti $model) {
+                return null;
+            };
 
-        $event->beforeValidate = function (LangNationality $model) {
-            return null;
-        };
 
-        $event->afterValidate = function (LangNationality $model) {
-            return null;
-        };
 
-        $event->afterRefresh = function (LangNationality $model) {
-            return null;
-        };
+            $event->beforeValidate = function (DynaMulti $model) {
+                return null;
+            };
 
-        $event->afterFind = function (LangNationality $model) {
-            return null;
-        };
-*/
+            $event->afterValidate = function (DynaMulti $model) {
+                return null;
+            };
+
+            $event->afterRefresh = function (DynaMulti $model) {
+                return null;
+            };
+
+            $event->afterFind = function (DynaMulti $model) {
+                return null;
+            };
+    */
         return $event;
 
     }
@@ -349,79 +377,77 @@ class LangNationality extends ZActiveRecord
      *
      * Function  getDeletedBy
      * @return bool|\yii\db\ActiveRecord|User|null
-     */            
+     */
     public function getDeletedByOne()
     {
         return $this->getOne(User::class, [
-          'id' => 'deleted_by',
-      ]);    
+            'id' => 'deleted_by',
+        ]);
     }
-    
-     /**
+
+    /**
      *
      * Function  getDeletedBy
      * @return \yii\db\ActiveQuery | ZActiveQuery
-     */            
+     */
     public function getDeletedBy()
     {
         return $this->hasOne(User::class, [
-          'id' => 'deleted_by',
-      ]);    
+            'id' => 'deleted_by',
+        ]);
     }
-    
-    
+
 
     /**
      *
      * Function  getCreatedBy
      * @return bool|\yii\db\ActiveRecord|User|null
-     */            
+     */
     public function getCreatedByOne()
     {
         return $this->getOne(User::class, [
-          'id' => 'created_by',
-      ]);    
+            'id' => 'created_by',
+        ]);
     }
-    
-     /**
+
+    /**
      *
      * Function  getCreatedBy
      * @return \yii\db\ActiveQuery | ZActiveQuery
-     */            
+     */
     public function getCreatedBy()
     {
         return $this->hasOne(User::class, [
-          'id' => 'created_by',
-      ]);    
+            'id' => 'created_by',
+        ]);
     }
-    
-    
+
 
     /**
      *
      * Function  getModifiedBy
      * @return bool|\yii\db\ActiveRecord|User|null
-     */            
+     */
     public function getModifiedByOne()
     {
         return $this->getOne(User::class, [
-          'id' => 'modified_by',
-      ]);    
+            'id' => 'modified_by',
+        ]);
     }
-    
-     /**
+
+    /**
      *
      * Function  getModifiedBy
      * @return \yii\db\ActiveQuery | ZActiveQuery
-     */            
+     */
     public function getModifiedBy()
     {
         return $this->hasOne(User::class, [
-          'id' => 'modified_by',
-      ]);    
+            'id' => 'modified_by',
+        ]);
     }
-    
-    
+
+
 
 
     #endregion
@@ -429,11 +455,9 @@ class LangNationality extends ZActiveRecord
     #region Multi
 
 
-
     #endregion
-    
-    #region Many
 
+    #region Many
 
 
     #endregion

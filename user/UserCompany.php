@@ -299,6 +299,42 @@ class UserCompany extends ZActiveRecord
                     ],
                 ];
             $config->hasMany = [
+                    'ShopBanner' => [
+                        'user_company_id' => 'id',
+                    ],
+                    'ShopBrand' => [
+                        'user_company_id' => 'id',
+                    ],
+                    'ShopCatalog' => [
+                        'user_company_id' => 'id',
+                    ],
+                    'ShopCourier' => [
+                        'user_company_id' => 'id',
+                    ],
+                    'ShopOrder' => [
+                        'source' => 'id',
+                    ],
+                    'ShopOrderItem' => [
+                        'user_company_id' => 'id',
+                    ],
+                    'ShopProduct' => [
+                        'user_company_id' => 'id',
+                    ],
+                    'Ware' => [
+                        'user_company_id' => 'id',
+                    ],
+                    'WareAccept' => [
+                        'source' => 'id',
+                    ],
+                    'WareEnter' => [
+                        'user_company_id' => 'id',
+                    ],
+                    'WareExit' => [
+                        'user_company_id' => 'id',
+                    ],
+                    'WareTrans' => [
+                        'user_company_id' => 'id',
+                    ],
                     'User' => [
                         'user_company_id' => 'id',
                     ],
@@ -312,18 +348,6 @@ class UserCompany extends ZActiveRecord
                         'user_company_id' => 'id',
                     ],
                     'CoreSetting' => [
-                        'user_company_id' => 'id',
-                    ],
-                    'EyufNeed' => [
-                        'user_company_id' => 'id',
-                    ],
-                    'EyufNeedCompatriot' => [
-                        'user_company_id' => 'id',
-                    ],
-                    'EyufNeedCount' => [
-                        'user_company_id' => 'id',
-                    ],
-                    'EyufScholar' => [
                         'user_company_id' => 'id',
                     ],
                 ];
@@ -1004,6 +1028,294 @@ class UserCompany extends ZActiveRecord
 
     /**
      *
+     * Function  getShopBannersWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopBanner
+     */            
+    public function getShopBannersWithUserCompanyIdMany()
+    {
+       return $this->getMany(ShopBanner::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopBannersWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopBannersWithUserCompanyId()
+    {
+       return $this->hasMany(ShopBanner::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopBrandsWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopBrand
+     */            
+    public function getShopBrandsWithUserCompanyIdMany()
+    {
+       return $this->getMany(ShopBrand::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopBrandsWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopBrandsWithUserCompanyId()
+    {
+       return $this->hasMany(ShopBrand::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCatalogsWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCatalog
+     */            
+    public function getShopCatalogsWithUserCompanyIdMany()
+    {
+       return $this->getMany(ShopCatalog::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCatalogsWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCatalogsWithUserCompanyId()
+    {
+       return $this->hasMany(ShopCatalog::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopCouriersWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopCourier
+     */            
+    public function getShopCouriersWithUserCompanyIdMany()
+    {
+       return $this->getMany(ShopCourier::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopCouriersWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopCouriersWithUserCompanyId()
+    {
+       return $this->hasMany(ShopCourier::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOrdersWithSourceMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrder
+     */            
+    public function getShopOrdersWithSourceMany()
+    {
+       return $this->getMany(ShopOrder::class, [
+            'source' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrdersWithSource
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrdersWithSource()
+    {
+       return $this->hasMany(ShopOrder::class, [
+            'source' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopOrderItemsWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrderItem
+     */            
+    public function getShopOrderItemsWithUserCompanyIdMany()
+    {
+       return $this->getMany(ShopOrderItem::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrderItemsWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrderItemsWithUserCompanyId()
+    {
+       return $this->hasMany(ShopOrderItem::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getShopProductsWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopProduct
+     */            
+    public function getShopProductsWithUserCompanyIdMany()
+    {
+       return $this->getMany(ShopProduct::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopProductsWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopProductsWithUserCompanyId()
+    {
+       return $this->hasMany(ShopProduct::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWaresWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|Ware
+     */            
+    public function getWaresWithUserCompanyIdMany()
+    {
+       return $this->getMany(Ware::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWaresWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWaresWithUserCompanyId()
+    {
+       return $this->hasMany(Ware::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareAcceptsWithSourceMany
+     * @return  null|\yii\db\ActiveRecord[]|WareAccept
+     */            
+    public function getWareAcceptsWithSourceMany()
+    {
+       return $this->getMany(WareAccept::class, [
+            'source' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareAcceptsWithSource
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareAcceptsWithSource()
+    {
+       return $this->hasMany(WareAccept::class, [
+            'source' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareEntersWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|WareEnter
+     */            
+    public function getWareEntersWithUserCompanyIdMany()
+    {
+       return $this->getMany(WareEnter::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareEntersWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareEntersWithUserCompanyId()
+    {
+       return $this->hasMany(WareEnter::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareExitsWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|WareExit
+     */            
+    public function getWareExitsWithUserCompanyIdMany()
+    {
+       return $this->getMany(WareExit::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareExitsWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareExitsWithUserCompanyId()
+    {
+       return $this->hasMany(WareExit::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWareTransWithUserCompanyIdMany
+     * @return  null|\yii\db\ActiveRecord[]|WareTrans
+     */            
+    public function getWareTransWithUserCompanyIdMany()
+    {
+       return $this->getMany(WareTrans::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWareTransWithUserCompanyId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWareTransWithUserCompanyId()
+    {
+       return $this->hasMany(WareTrans::class, [
+            'user_company_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
      * Function  getUsersWithUserCompanyIdMany
      * @return  null|\yii\db\ActiveRecord[]|User
      */            
@@ -1118,102 +1430,6 @@ class UserCompany extends ZActiveRecord
     public function getCoreSettingsWithUserCompanyId()
     {
        return $this->hasMany(CoreSetting::class, [
-            'user_company_id' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufNeedsWithUserCompanyIdMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeed
-     */            
-    public function getEyufNeedsWithUserCompanyIdMany()
-    {
-       return $this->getMany(EyufNeed::class, [
-            'user_company_id' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufNeedsWithUserCompanyId
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufNeedsWithUserCompanyId()
-    {
-       return $this->hasMany(EyufNeed::class, [
-            'user_company_id' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufNeedCompatriotsWithUserCompanyIdMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeedCompatriot
-     */            
-    public function getEyufNeedCompatriotsWithUserCompanyIdMany()
-    {
-       return $this->getMany(EyufNeedCompatriot::class, [
-            'user_company_id' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufNeedCompatriotsWithUserCompanyId
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufNeedCompatriotsWithUserCompanyId()
-    {
-       return $this->hasMany(EyufNeedCompatriot::class, [
-            'user_company_id' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufNeedCountsWithUserCompanyIdMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeedCount
-     */            
-    public function getEyufNeedCountsWithUserCompanyIdMany()
-    {
-       return $this->getMany(EyufNeedCount::class, [
-            'user_company_id' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufNeedCountsWithUserCompanyId
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufNeedCountsWithUserCompanyId()
-    {
-       return $this->hasMany(EyufNeedCount::class, [
-            'user_company_id' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufScholarsWithUserCompanyIdMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufScholar
-     */            
-    public function getEyufScholarsWithUserCompanyIdMany()
-    {
-       return $this->getMany(EyufScholar::class, [
-            'user_company_id' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufScholarsWithUserCompanyId
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufScholarsWithUserCompanyId()
-    {
-       return $this->hasMany(EyufScholar::class, [
             'user_company_id' => 'id',
         ]);     
     }

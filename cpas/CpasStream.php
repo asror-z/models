@@ -34,7 +34,6 @@ use zetsoft\dbitem\data\Config;
 use zetsoft\system\actives\ZModel;
 use zetsoft\models\cpas\CpasTeaser;
 use zetsoft\models\cpas\CpasStreamItem;
-use zetsoft\widgets\inputes\ZHInputWidget;
 use zetsoft\widgets\incores\ZMCheckboxWidget;
 
 
@@ -224,7 +223,7 @@ class CpasStream extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $config->nameValue = function (CpasStream $model) {
+                        $config->nameValue = function (CpasStream $model) {
                 $offer = CpasOffer::findOne($model->cpas_offer_id);
                 if ($offer === null)
                     return $model->title;
@@ -247,7 +246,7 @@ class CpasStream extends ZActiveRecord
                         'cpas_stream_id' => 'id',
                     ],
                 ];
-            $config->relateMany = [
+            $config->relationMany = [
                     'zetsoft\\models\\cpas\\CpasStreamItem',
                 ];
             $config->title = Az::l('Потоки');
@@ -276,7 +275,7 @@ class CpasStream extends ZActiveRecord
              * Relations
              */
 
-            'cpas_offer_id' => function (FormDb $column) {
+            'cpas_offer_id' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->dbType = dbTypeInteger;
@@ -288,7 +287,7 @@ class CpasStream extends ZActiveRecord
             },
 
 
-            'user_id' => function (FormDb $column) {
+            'user_id' => static function (FormDb $column) {
 
                 $column->index = true;
                 $column->dbType = dbTypeInteger;
@@ -305,9 +304,21 @@ class CpasStream extends ZActiveRecord
              * Main Data
              */
 
+            'title' => static function (FormDb $column) {
+
+                $column->title = Az::l('Название');
+                $column->widget = ZInputWidget::class;
+                $column->rules = [
+                    [
+                        'zetsoft\\system\\validate\\ZRequiredValidator'
+                    ]
+                ];
+
+                return $column;
+            },
 
 
-            'counter' => function (FormDb $column) {
+            'counter' => static function (FormDb $column) {
 
                 $column->title = Az::l('Идентификаторы счетчиков');
                 $column->dbType = dbTypeJsonb;
@@ -324,14 +335,15 @@ class CpasStream extends ZActiveRecord
                     ],
                 ];
                 $column->event = function (CpasStream $model) {
-                    Az::$app->cpas->cpa->editStream($model);
+//                    if (!Az::$app->paramGet($this->paramIsUpdate))
+//                        Az::$app->cpas->cpa->editStream($model);
                 };
 
 
                 return $column;
             },
 
-            'widget' => function (FormDb $column) {
+            'widget' => static function (FormDb $column) {
 
                 $column->title = Az::l('Counter for CallCenter');
                 $column->dbType = dbTypeJsonb;
@@ -360,7 +372,7 @@ class CpasStream extends ZActiveRecord
              * Postbacks
              */
 
-            'postback' => function (FormDb $column) {
+            'postback' => static function (FormDb $column) {
 
                 $column->title = Az::l('Постбек для пользователей');
                 $column->dbType = dbTypeJsonb;
@@ -383,7 +395,7 @@ class CpasStream extends ZActiveRecord
             },
 
 
-            'trafficback' => function (FormDb $column) {
+            'trafficback' => static function (FormDb $column) {
 
                 $column->title = Az::l('Traficback');
                 $column->dbType = dbTypeBoolean;
@@ -398,46 +410,46 @@ class CpasStream extends ZActiveRecord
              * Sub Accounts
              */
 
-            'sub1' => function (FormDb $column) {
+            'sub1' => static function (FormDb $column) {
 
                 $column->title = Az::l('Sub1');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'sub2' => function (FormDb $column) {
+            'sub2' => static function (FormDb $column) {
 
                 $column->title = Az::l('Sub2');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'sub3' => function (FormDb $column) {
+            'sub3' => static function (FormDb $column) {
 
                 $column->title = Az::l('Sub3');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'sub4' => function (FormDb $column) {
+            'sub4' => static function (FormDb $column) {
 
                 $column->title = Az::l('Sub4');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'sub5' => function (FormDb $column) {
+            'sub5' => static function (FormDb $column) {
 
                 $column->title = Az::l('Sub5');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
@@ -448,37 +460,37 @@ class CpasStream extends ZActiveRecord
              * Teasers
              */
 
-            'utm_source' => function (FormDb $column) {
+            'utm_source' => static function (FormDb $column) {
 
                 $column->title = Az::l('UTM source');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'utm_company' => function (FormDb $column) {
+            'utm_company' => static function (FormDb $column) {
 
                 $column->title = Az::l('UTM company');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'utm_content' => function (FormDb $column) {
+            'utm_content' => static function (FormDb $column) {
 
                 $column->title = Az::l('UTM content');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },
 
 
-            'utm_term' => function (FormDb $column) {
+            'utm_term' => static function (FormDb $column) {
 
                 $column->title = Az::l('UTM term');
-                $column->widget = ZHInputWidget::class;
+                $column->widget = ZInputWidget::class;
 
                 return $column;
             },

@@ -220,7 +220,7 @@ class ShopOrderItem extends ZActiveRecord
         return function (ConfigDB $config) {
 
             $config->addTitle = false;
-                                                                                                                                                                        $config->nameValue = static function (ShopOrderItem $model) {
+                                                                                                                                                                                    $config->nameValue = static function (ShopOrderItem $model) {
 
                 Az::$app->forms->wiData->clean();
                 Az::$app->forms->wiData->model = $model;

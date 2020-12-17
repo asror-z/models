@@ -229,6 +229,9 @@ class PaysPayment extends ZActiveRecord
                     'PaysWithdraw' => [
                         'pays_payment_id' => 'id',
                     ],
+                    'CpasPaysHistory' => [
+                        'pays_payment_id' => 'id',
+                    ],
                 ];
             $config->title = Az::l('Платежная система');
 
@@ -744,6 +747,30 @@ class PaysPayment extends ZActiveRecord
     public function getPaysWithdrawsWithPaysPaymentId()
     {
        return $this->hasMany(PaysWithdraw::class, [
+            'pays_payment_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getCpasPaysHistoriesWithPaysPaymentIdMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasPaysHistory
+     */            
+    public function getCpasPaysHistoriesWithPaysPaymentIdMany()
+    {
+       return $this->getMany(CpasPaysHistory::class, [
+            'pays_payment_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getCpasPaysHistoriesWithPaysPaymentId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getCpasPaysHistoriesWithPaysPaymentId()
+    {
+       return $this->hasMany(CpasPaysHistory::class, [
             'pays_payment_id' => 'id',
         ]);     
     }

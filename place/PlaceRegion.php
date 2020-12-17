@@ -54,6 +54,8 @@ use zetsoft\widgets\incores\ZMCheckboxWidget;
  * @property int $place_country_id
  * @property string $type
  * @property int $parent_id
+ * @property int $delivery_price
+ * @property int $ware_id
  * @property string $deleted_at
  * @property int $deleted_by
  * @property string $deleted_text
@@ -78,6 +80,8 @@ class PlaceRegion extends ZActiveRecord
     public $place_country_id;
     public $type;
     public $parent_id;
+    public $delivery_price;
+    public $ware_id;
     public $deleted_at;
     public $deleted_by;
     public $deleted_text;
@@ -103,6 +107,8 @@ class PlaceRegion extends ZActiveRecord
         'place_country_id',
         'type',
         'parent_id',
+        'delivery_price',
+        'ware_id',
         'deleted_at',
         'deleted_by',
         'deleted_text',
@@ -169,6 +175,8 @@ class PlaceRegion extends ZActiveRecord
 			'place_country_id',
 			'type',
 			'parent_id',
+			'delivery_price',
+			'ware_id',
 			'deleted_at',
 			'deleted_by',
 			'deleted_text',
@@ -193,7 +201,7 @@ class PlaceRegion extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $config->nameValue = function ($model) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $config->nameValue = function ($model) {
                 /** @var PlaceRegion $model */
 
                 $country = PlaceCountry::findOne($model->place_country_id);
@@ -220,6 +228,9 @@ class PlaceRegion extends ZActiveRecord
                     'PlaceRegion' => [
                         'parent_id' => 'id',
                     ],
+                    'Ware' => [
+                        'ware_id' => 'id',
+                    ],
                     'User' => [
                         'deleted_by' => 'id',
                         'created_by' => 'id',
@@ -227,6 +238,9 @@ class PlaceRegion extends ZActiveRecord
                     ],
                 ];
             $config->hasMany = [
+                    'ShopOrder' => [
+                        'place_region_id' => 'id',
+                    ],
                     'PaysSysClick' => [
                         'place_region_id' => 'id',
                         'parent_id' => 'id',
@@ -402,6 +416,8 @@ class PlaceRegion extends ZActiveRecord
         'place_country_id',
         'type',
         'parent_id',
+        'delivery_price',
+        'ware_id',
         'deleted_at',
         'deleted_by',
         'deleted_text',
@@ -595,6 +611,32 @@ class PlaceRegion extends ZActiveRecord
 
     /**
      *
+     * Function  getWare
+     * @return bool|\yii\db\ActiveRecord|Ware|null
+     */            
+    public function getWareOne()
+    {
+        return $this->getOne(Ware::class, [
+          'id' => 'ware_id',
+      ]);    
+    }
+    
+     /**
+     *
+     * Function  getWare
+     * @return \yii\db\ActiveQuery | ZActiveQuery
+     */            
+    public function getWare()
+    {
+        return $this->hasOne(Ware::class, [
+          'id' => 'ware_id',
+      ]);    
+    }
+    
+    
+
+    /**
+     *
      * Function  getDeletedBy
      * @return bool|\yii\db\ActiveRecord|User|null
      */            
@@ -682,6 +724,30 @@ class PlaceRegion extends ZActiveRecord
     
     #region Many
 
+
+    /**
+     *
+     * Function  getShopOrdersWithPlaceRegionIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrder
+     */            
+    public function getShopOrdersWithPlaceRegionIdMany()
+    {
+       return $this->getMany(ShopOrder::class, [
+            'place_region_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrdersWithPlaceRegionId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrdersWithPlaceRegionId()
+    {
+       return $this->hasMany(ShopOrder::class, [
+            'place_region_id' => 'id',
+        ]);     
+    }
 
     /**
      *

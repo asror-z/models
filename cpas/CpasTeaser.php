@@ -177,6 +177,7 @@ class CpasTeaser extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
+            $config->nameAuto = false;
             $config->hasOne = [
                     'User' => [
                         'deleted_by' => 'id',
@@ -209,7 +210,7 @@ class CpasTeaser extends ZActiveRecord
         return ZArrayHelper::merge(parent::column(), [
 
 
-            'website' => function (FormDb $column) {
+            'website' => static function (FormDb $column) {
 
                 $column->title = Az::l('Веб сайт');
                 $column->rules = [
@@ -223,7 +224,7 @@ class CpasTeaser extends ZActiveRecord
 
                 
 
-            'pattern' => function (FormDb $column) {
+            'pattern' => static function (FormDb $column) {
 
                 $column->title = Az::l('Паттерн ссылки');
                 $column->rules = [
@@ -236,6 +237,17 @@ class CpasTeaser extends ZActiveRecord
                 return $column;
             },
 
+
+            'active' => static function (FormDb $column) {
+
+                $column->title = Az::l('Активен');
+                $column->dbType = dbTypeBoolean;
+                $column->widget = ZKSwitchInputWidget::class;
+                $column->value = true;
+                $column->mergeHeader = true;
+
+                return $column;
+            },
 
 
         ], $this->configs->replace);

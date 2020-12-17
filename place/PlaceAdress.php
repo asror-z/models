@@ -215,7 +215,7 @@ class PlaceAdress extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
-                                                                                                                                                                                    $config->nameValue = static function (PlaceAdress $model) {
+                                                                                                                                                                                                $config->nameValue = static function (PlaceAdress $model) {
 
                 if (empty($model->place_region_id))
                     return null;
@@ -249,6 +249,12 @@ class PlaceAdress extends ZActiveRecord
                     ],
                 ];
             $config->hasMany = [
+                    'ShopOrder' => [
+                        'place_adress_id' => 'id',
+                    ],
+                    'Ware' => [
+                        'place_adress_id' => 'id',
+                    ],
                     'UserCompany' => [
                         'place_adress_id' => 'id',
                     ],
@@ -837,6 +843,54 @@ class PlaceAdress extends ZActiveRecord
     
     #region Many
 
+
+    /**
+     *
+     * Function  getShopOrdersWithPlaceAdressIdMany
+     * @return  null|\yii\db\ActiveRecord[]|ShopOrder
+     */            
+    public function getShopOrdersWithPlaceAdressIdMany()
+    {
+       return $this->getMany(ShopOrder::class, [
+            'place_adress_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getShopOrdersWithPlaceAdressId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getShopOrdersWithPlaceAdressId()
+    {
+       return $this->hasMany(ShopOrder::class, [
+            'place_adress_id' => 'id',
+        ]);     
+    }
+
+    /**
+     *
+     * Function  getWaresWithPlaceAdressIdMany
+     * @return  null|\yii\db\ActiveRecord[]|Ware
+     */            
+    public function getWaresWithPlaceAdressIdMany()
+    {
+       return $this->getMany(Ware::class, [
+            'place_adress_id' => 'id',
+        ]);     
+    }
+    
+    /**
+     *
+     * Function  getWaresWithPlaceAdressId
+     * @return  null|\yii\db\ActiveQuery
+     */            
+    public function getWaresWithPlaceAdressId()
+    {
+       return $this->hasMany(Ware::class, [
+            'place_adress_id' => 'id',
+        ]);     
+    }
 
     /**
      *

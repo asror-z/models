@@ -243,18 +243,14 @@ class PlaceCountry extends ZActiveRecord
                     'PlaceRegion' => [
                         'place_country_id' => 'id',
                     ],
-                    'EyufCompatriot' => [
-                        'citizenship' => 'id',
+                    'CpasLand' => [
                         'place_country_id' => 'id',
                     ],
-                    'EyufNeedCompatriot' => [
-                        'place_country_id' => 'id',
+                    'CpasOffer' => [
+                        'deliver' => 'id',
+                        'call_center' => 'id',
                     ],
-                    'EyufScholar' => [
-                        'place_country_id' => 'id',
-                    ],
-                    'EyufTable' => [
-                        'citizenship' => 'id',
+                    'CpasOfferItem' => [
                         'place_country_id' => 'id',
                     ],
                 ];
@@ -689,144 +685,96 @@ class PlaceCountry extends ZActiveRecord
 
     /**
      *
-     * Function  getEyufCompatriotsWithCitizenshipMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufCompatriot
+     * Function  getCpasLandsWithPlaceCountryIdMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasLand
      */            
-    public function getEyufCompatriotsWithCitizenshipMany()
+    public function getCpasLandsWithPlaceCountryIdMany()
     {
-       return $this->getMany(EyufCompatriot::class, [
-            'citizenship' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufCompatriotsWithCitizenship
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufCompatriotsWithCitizenship()
-    {
-       return $this->hasMany(EyufCompatriot::class, [
-            'citizenship' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufCompatriotsWithPlaceCountryIdMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufCompatriot
-     */            
-    public function getEyufCompatriotsWithPlaceCountryIdMany()
-    {
-       return $this->getMany(EyufCompatriot::class, [
+       return $this->getMany(CpasLand::class, [
             'place_country_id' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufCompatriotsWithPlaceCountryId
+     * Function  getCpasLandsWithPlaceCountryId
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufCompatriotsWithPlaceCountryId()
+    public function getCpasLandsWithPlaceCountryId()
     {
-       return $this->hasMany(EyufCompatriot::class, [
+       return $this->hasMany(CpasLand::class, [
             'place_country_id' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufNeedCompatriotsWithPlaceCountryIdMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufNeedCompatriot
+     * Function  getCpasOffersWithDeliverMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasOffer
      */            
-    public function getEyufNeedCompatriotsWithPlaceCountryIdMany()
+    public function getCpasOffersWithDeliverMany()
     {
-       return $this->getMany(EyufNeedCompatriot::class, [
-            'place_country_id' => 'id',
+       return $this->getMany(CpasOffer::class, [
+            'deliver' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufNeedCompatriotsWithPlaceCountryId
+     * Function  getCpasOffersWithDeliver
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufNeedCompatriotsWithPlaceCountryId()
+    public function getCpasOffersWithDeliver()
     {
-       return $this->hasMany(EyufNeedCompatriot::class, [
-            'place_country_id' => 'id',
+       return $this->hasMany(CpasOffer::class, [
+            'deliver' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufScholarsWithPlaceCountryIdMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufScholar
+     * Function  getCpasOffersWithCallCenterMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasOffer
      */            
-    public function getEyufScholarsWithPlaceCountryIdMany()
+    public function getCpasOffersWithCallCenterMany()
     {
-       return $this->getMany(EyufScholar::class, [
-            'place_country_id' => 'id',
+       return $this->getMany(CpasOffer::class, [
+            'call_center' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufScholarsWithPlaceCountryId
+     * Function  getCpasOffersWithCallCenter
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufScholarsWithPlaceCountryId()
+    public function getCpasOffersWithCallCenter()
     {
-       return $this->hasMany(EyufScholar::class, [
-            'place_country_id' => 'id',
+       return $this->hasMany(CpasOffer::class, [
+            'call_center' => 'id',
         ]);     
     }
 
     /**
      *
-     * Function  getEyufTablesWithCitizenshipMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufTable
+     * Function  getCpasOfferItemsWithPlaceCountryIdMany
+     * @return  null|\yii\db\ActiveRecord[]|CpasOfferItem
      */            
-    public function getEyufTablesWithCitizenshipMany()
+    public function getCpasOfferItemsWithPlaceCountryIdMany()
     {
-       return $this->getMany(EyufTable::class, [
-            'citizenship' => 'id',
-        ]);     
-    }
-    
-    /**
-     *
-     * Function  getEyufTablesWithCitizenship
-     * @return  null|\yii\db\ActiveQuery
-     */            
-    public function getEyufTablesWithCitizenship()
-    {
-       return $this->hasMany(EyufTable::class, [
-            'citizenship' => 'id',
-        ]);     
-    }
-
-    /**
-     *
-     * Function  getEyufTablesWithPlaceCountryIdMany
-     * @return  null|\yii\db\ActiveRecord[]|EyufTable
-     */            
-    public function getEyufTablesWithPlaceCountryIdMany()
-    {
-       return $this->getMany(EyufTable::class, [
+       return $this->getMany(CpasOfferItem::class, [
             'place_country_id' => 'id',
         ]);     
     }
     
     /**
      *
-     * Function  getEyufTablesWithPlaceCountryId
+     * Function  getCpasOfferItemsWithPlaceCountryId
      * @return  null|\yii\db\ActiveQuery
      */            
-    public function getEyufTablesWithPlaceCountryId()
+    public function getCpasOfferItemsWithPlaceCountryId()
     {
-       return $this->hasMany(EyufTable::class, [
+       return $this->hasMany(CpasOfferItem::class, [
             'place_country_id' => 'id',
         ]);     
     }

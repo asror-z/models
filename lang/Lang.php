@@ -50,6 +50,8 @@ use zetsoft\widgets\incores\ZMCheckboxWidget;
  * @property string $ru
  * @property string $uz
  * @property string $uzk
+ * @property string $lv
+ * @property string $ro
  * @property string $deleted_at
  * @property int $deleted_by
  * @property string $deleted_text
@@ -77,6 +79,8 @@ class Lang extends ZActiveRecord
     public $ru;
     public $uz;
     public $uzk;
+    public $lv;
+    public $ro;
     public $deleted_at;
     public $deleted_by;
     public $deleted_text;
@@ -105,6 +109,8 @@ class Lang extends ZActiveRecord
         'ru',
         'uz',
         'uzk',
+        'lv',
+        'ro',
         'deleted_at',
         'deleted_by',
         'deleted_text',
@@ -158,6 +164,8 @@ class Lang extends ZActiveRecord
 			'ru',
 			'uz',
 			'uzk',
+			'lv',
+			'ro',
 			'deleted_at',
 			'deleted_by',
 			'deleted_text',
@@ -256,6 +264,8 @@ class Lang extends ZActiveRecord
         'ru',
         'uz',
         'uzk',
+        'lv',
+        'ro',
         'deleted_at',
         'deleted_by',
         'deleted_text',

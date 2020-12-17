@@ -191,7 +191,7 @@ class CallsStatusTime extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $config->nameValue = function (CallsStatusTime $model) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $config->nameValue = function (CallsStatusTime $model) {
 
                 $user = User::findOne($model->user_id);
                 if ($user)

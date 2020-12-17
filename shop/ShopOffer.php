@@ -194,7 +194,7 @@ class ShopOffer extends ZActiveRecord
     {
         return function (ConfigDB $config) {
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $config->nameValue = function (ShopOffer $offer) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $config->nameValue = function (ShopOffer $offer) {
                 $catalog = $offer->getShopCatalog()->one();
                 if ($catalog === null)
                     return null;
